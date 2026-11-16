@@ -328,6 +328,13 @@
   .box:hover { border-color: rgba(128, 128, 128, .7); border-color: color-mix(in srgb, var(--text) 50%, transparent); }
   .box:focus { outline: none; border-color: var(--text); box-shadow: 0 0 0 3px rgba(148, 106, 22, .22); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-2) 22%, transparent); }
   .box.full { grid-column: 1 / -1; }
+  /* iPhone: поля даты и времени не шире своей ячейки, значение слева (Safari рисует их шире и они наезжают друг на друга) */
+  .box { min-width: 0; max-width: 100%; }
+  input.box::-webkit-date-and-time-value { text-align: left; margin: 0; }
+  @supports (-webkit-touch-callout: none) {
+    input[type="date"].box, input[type="time"].box { -webkit-appearance: none; appearance: none; }
+  }
+  @media (max-width: 720px) { .box { font-size: 16px; } }
   textarea.box { min-height: 70px; resize: vertical; }
   select.box { appearance: none; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%23888' stroke-width='1.5'%3E%3Cpath d='M1 1l5 5 5-5'/%3E%3C/svg%3E") no-repeat right 14px center; padding-right: 34px; cursor: pointer; }
   select.box:has(option[value=""]:checked) { color: var(--muted); }
