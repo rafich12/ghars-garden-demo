@@ -242,7 +242,6 @@
   .tcard:nth-child(3) { margin-top: 152px; }
   .tph { aspect-ratio: 3 / 4; }
   .par { will-change: transform; }
-  .tph img.par, .about-art .frame img.par { height: 114%; }
   .tcard figcaption { margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--line); }
   .tcard p { color: var(--muted); margin: 10px 0 0; font-size: 15px; max-width: 27em; }
 
@@ -454,7 +453,7 @@
   .js .rv { opacity: 0; transform: translateY(22px); transition: opacity var(--d3) var(--ease), transform var(--d3) var(--ease); }
   .js .rv.in { opacity: 1; transform: none; }
   /* шторка цвета фона уходит вниз и открывает фото; сама картинка не обрезается, поэтому «ленивая» загрузка работает */
-  .js .rvi::before { content: ""; position: absolute; inset: 0; z-index: 1; background: var(--cur, var(--bg)); transform-origin: 50% 100%; transition: transform 1.3s var(--ease); }
+  .js .rvi::before { content: ""; position: absolute; inset: 0; z-index: 3; background: var(--cur, var(--bg)); transform-origin: 50% 100%; transition: transform 1.3s var(--ease); }
   .js .rvi.in::before { transform: scaleY(0); }
   .js .stagger > * { opacity: 0; transform: translateY(14px); transition: opacity var(--d3) var(--ease), transform var(--d3) var(--ease); transition-delay: calc(var(--i, 0) * 80ms); }
   .js .stagger.in > * { opacity: 1; transform: none; }
@@ -1559,7 +1558,7 @@
   const header = document.getElementById("header");
   const ribbon = document.querySelector(".demo-ribbon");
   const progress = document.getElementById("progress");
-  const pars = [...document.querySelectorAll("img.par")];
+  const pars = [...document.querySelectorAll("img.par")].map(img => img.parentElement);
   let lastY = window.scrollY;
   function storyFrame() {
     const y = window.scrollY, vh = innerHeight;
@@ -1576,11 +1575,12 @@
       hsBar.style.transform = `scaleX(${p})`;
     }
     if (!reduceMotion) {
-      pars.forEach(img => {
-        const r = img.parentElement.getBoundingClientRect();
+      // фото и его рамка едут вместе; положение считаем по родителю, чтобы сдвиг не влиял на расчёт
+      pars.forEach(fr => {
+        const r = fr.parentElement.getBoundingClientRect();
         if (r.bottom < -200 || r.top > vh + 200) return;
         const p = clamp((vh - r.top) / (vh + r.height), 0, 1);
-        img.style.transform = `translate3d(0, ${-p * 12}%, 0)`;
+        fr.style.transform = `translate3d(0, ${(0.5 - p) * 44}px, 0)`;
       });
       if (wordSpans.length) {
         const r = wordsEl.getBoundingClientRect();

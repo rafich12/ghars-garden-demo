@@ -165,10 +165,10 @@
 
   /* Вращающийся бейдж с рейтингом */
   .ring { position: relative; width: 150px; height: 150px; border-radius: 50%; background: var(--bg); box-shadow: var(--sh-1); display: grid; place-items: center; }
-  .ring svg { position: absolute; inset: 8px; width: calc(100% - 16px); height: calc(100% - 16px); animation: spin 26s linear infinite; }
+  .ring > svg { position: absolute; inset: 8px; width: calc(100% - 16px); height: calc(100% - 16px); animation: spin 26s linear infinite; }
   .ring text { font: 600 11px var(--sans); letter-spacing: .14em; text-transform: uppercase; fill: var(--muted); }
-  .ring b { font: 400 34px/1 var(--serif); font-stretch: 75%; color: var(--text); }
-  .ring b small { font-size: 16px; color: var(--accent-2); }
+  .ring b { display: inline-flex; align-items: baseline; gap: .1em; font: 400 34px/1 var(--serif); font-stretch: 75%; color: var(--text); }
+  .ring b .star { width: .75em; height: .714em; fill: var(--accent-2); flex: none; }
   @keyframes spin { to { transform: rotate(360deg); } }
 
   /* ============ Служебное: прогресс, полоса демо, шапка ============ */
@@ -239,8 +239,10 @@
   .art .ring { position: absolute; left: 6%; top: 8%; }
 
   /* Сад и залы: чередующиеся строки */
-  .row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s9); align-items: center; margin-top: var(--s9); }
-  .row .leaf { aspect-ratio: 4 / 5; }
+  .row { display: grid; grid-template-columns: 1.45fr 1fr; gap: clamp(40px, 5vw, 96px); align-items: center; width: min(90vw, 1640px); margin: var(--s9) 0 0 calc(50% - min(45vw, 820px)); }
+  .row.rev { grid-template-columns: 1fr 1.45fr; }
+  .row .leaf { height: min(84vh, 880px); min-height: 440px; border-radius: 200px 12px 200px 12px; }
+  .row h3 { font-size: clamp(36px, 3.4vw, 58px); }
   .row.rev .media { order: 2; }
   .row p { color: var(--muted); max-width: 30em; margin: var(--s4) 0 0; white-space: pre-line; }
   .row .paving { margin-top: var(--s6); max-width: 252px; }
@@ -271,7 +273,6 @@
   /* Меню */
   .menu-cards { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s5); margin-top: var(--s8); }
   .mcard { position: relative; min-height: 560px; overflow: hidden; border-radius: var(--r-s); display: flex; align-items: flex-end; justify-content: center; text-align: center; color: var(--light); }
-  .mcard:first-child { border-radius: var(--r-leaf-s); }
   .mcard img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
   .mcard:hover img { transform: scale(1.05); }
   .mcard::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 38%, rgba(18,20,15,.78)); }
@@ -284,7 +285,6 @@
   .dgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s7) 22px; margin-top: var(--s7); }
   .dcard { margin: 0; }
   .dcard .ph { aspect-ratio: 4 / 5; border-radius: var(--r-s); overflow: hidden; background: var(--bg-2); transition: border-radius var(--d2) var(--ease); }
-  .dcard:nth-child(odd) .ph { border-radius: var(--r-leaf-s); }
   .dcard img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
   .dcard:hover img { transform: scale(1.05); }
   .dtop { display: flex; justify-content: space-between; align-items: baseline; gap: var(--s3); margin-top: 14px; }
@@ -479,7 +479,7 @@
   .story-sub p { position: absolute; left: 0; right: 0; bottom: 0; margin: 0; opacity: 0; transform: translateY(12px); transition: opacity var(--d2) var(--ease), transform var(--d2) var(--ease); }
   .story-sub p.on { opacity: 1; transform: none; }
   /* следующий блок наезжает на закреплённую сцену */
-  .cover { position: relative; z-index: 4; margin-top: -100vh; margin-top: -100svh; background: var(--bg); border-radius: var(--r-l) var(--r-l) 0 0; box-shadow: 0 -30px 60px rgba(0,0,0,.18); }
+  .cover { position: relative; z-index: 4; background: var(--bg); border-radius: var(--r-l) var(--r-l) 0 0; box-shadow: 0 -30px 60px rgba(0,0,0,.18); }
   /* без анимаций: обычный блок с фото и словами */
   .story.static { height: auto; }
   .story.static .story-sticky { position: relative; height: 90vh; }
@@ -521,6 +521,9 @@
     nav.links { display: none; }
     .about, .row { grid-template-columns: 1fr; gap: var(--s7); }
     .row.rev .media { order: 0; }
+    .row, .row.rev { grid-template-columns: 1fr; width: auto; margin-left: 0; }
+    .row .leaf { height: auto; min-height: 0; aspect-ratio: 4 / 5; border-radius: var(--r-leaf); }
+    .row h3 { font-size: var(--t-h3); }
     .art { max-width: 520px; width: 100%; margin: 0 auto; }
     .collage { grid-template-columns: repeat(6, 1fr); grid-auto-rows: 70px; }
     .c1 { grid-column: 1 / 4; grid-row: 1 / 6; }
@@ -573,7 +576,6 @@
     .dgrid { gap: 34px 12px; }
     .dtop { flex-direction: column; gap: 2px; }
     .dcard p { font-size: 13px; }
-    .dcard:nth-child(odd) .ph { border-radius: 40px 6px 40px 6px; }
     .quote-wrap { grid-template-columns: 1fr; gap: 0; }
     .qmark { font-size: 100px; height: 60px; }
     .book-card { padding: 36px 20px 28px; }
@@ -663,28 +665,6 @@
     </div>
   </div>
 
-  <div class="story" id="story">
-    <div class="story-sticky">
-      <figure class="scat sc1"><img src="../img/dish-khash.jpg" alt="" loading="lazy"></figure>
-      <figure class="scat sc2 is-circle"><img src="../img/roses.jpg" alt="" loading="lazy"></figure>
-      <figure class="scat sc3"><img src="../img/bread-tonir.jpg" alt="" loading="lazy"></figure>
-      <figure class="scat sc4"><img src="../img/dish-borsch.jpg" alt="" loading="lazy"></figure>
-      <figure class="scat sc5"><img src="../img/terrace-evening.jpg" alt="" loading="lazy"></figure>
-      <figure class="scat sc6 is-leaf"><img src="../img/waterfall.jpg" alt="" loading="lazy"></figure>
-      <figure class="scat sc7"><img src="../img/dish-eggplant.jpg" alt="" loading="lazy"></figure>
-      <figure class="scat sc8"><img src="../img/gazebo-2.jpg" alt="" loading="lazy"></figure>
-      <div class="story-center"><img src="../img/garden-path.jpg" alt="" loading="lazy"></div>
-      <div class="story-shade"></div>
-      <div class="story-words" aria-hidden="true">
-        <div class="track"><span data-i18n="w1">Ջրվեժի ձայնը</span><span data-i18n="w2">Թոնրի հացը</span></div>
-      </div>
-      <div class="story-sub">
-        <p data-i18n="ws1">Քարե ջրվեժ այգու խորքում, նոճիներ, ուռենիներ և վարդեր։</p>
-        <p data-i18n="ws2">Հացը թխում ենք տեղում՝ թոնրում, ամեն օր։</p>
-      </div>
-    </div>
-  </div>
-
   <section id="about" class="cover">
     <div class="wrap about">
       <div>
@@ -718,7 +698,7 @@
         <div class="circle"><img src="../img/bread-tonir.jpg" alt="" loading="lazy"></div>
         <div class="ring" aria-label="5,0">
           <svg viewBox="0 0 200 200" aria-hidden="true"><defs><path id="ringPath" d="M100,100 m-80,0 a80,80 0 1,1 160,0 a80,80 0 1,1 -160,0"/></defs><text><textPath href="#ringPath" data-i18n="ringText">այգի-ռեստորան · Աբովյան · ամեն օր 09:00–00:00 · </textPath></text></svg>
-          <b><span data-count="5" data-dec="1">5,0</span><small>★</small></b>
+          <b><span data-count="5" data-dec="1">5,0</span><svg class="star" viewBox="1.7 1.8 20.6 19.6" aria-hidden="true"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg></b>
         </div>
       </div>
     </div>
@@ -1571,55 +1551,10 @@
     ["about", "spaces", "menu", "visit"].forEach(id => spy.observe(document.getElementById(id)));
   }
 
-  // Сцена из видео: лист раскрывается на весь экран, фото разлетаются, слова листаются вбок
+  // Плавность для анимаций коллажа
   const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
   const lerp = (a, b, t) => a + (b - a) * t;
   const easeOut = t => 1 - Math.pow(1 - t, 3);
-  const story = document.getElementById("story");
-  const scats = [...story.querySelectorAll(".scat")];
-  const storyImg = story.querySelector(".story-center img");
-  const storyCenter = story.querySelector(".story-center");
-  const storyShade = story.querySelector(".story-shade");
-  const track = story.querySelector(".track");
-  const words = [...track.children];
-  const subs = [...story.querySelectorAll(".story-sub p")];
-  let scatDirs = [];
-  function measureStory() {
-    const vw = innerWidth, vh = innerHeight;
-    scatDirs = scats.map(s => {
-      const x = s.offsetLeft + s.offsetWidth / 2 - vw / 2, y = s.offsetTop + s.offsetHeight / 2 - vh / 2;
-      const len = Math.hypot(x, y) || 1;
-      return { x: x / len, y: y / len };
-    });
-  }
-  function storyFrame() {
-    const vw = innerWidth, vh = innerHeight;
-    const p = clamp(-story.getBoundingClientRect().top / (story.offsetHeight - 2 * vh), 0, 1);
-    const pz = easeOut(clamp(p / 0.38, 0, 1));          // раскрытие листа
-    const pw = clamp((p - 0.42) / 0.58, 0, 1);           // листание слов
-    const w0 = vw < 720 ? vw * 0.56 : Math.min(vw * 0.28, 420, vh * 0.6 / 1.3), h0 = w0 * 1.3;
-    const w = lerp(w0, vw, pz), h = lerp(h0, vh, pz);
-    // форма листа: большие скругления слева сверху и справа снизу
-    const ix = (vw - w) / 2, iy = (vh - h) / 2, r = lerp(w0 * 0.5, 0, pz), rb = lerp(8, 0, pz);
-    storyCenter.style.clipPath = `inset(${iy}px ${ix}px ${iy}px ${ix}px round ${r}px ${rb}px ${r}px ${rb}px)`;
-    storyImg.style.transform = `scale(${lerp(1.25, 1, pz)})`;
-    storyShade.style.opacity = clamp((pz - 0.6) / 0.4, 0, 1);
-    const fly = pz * Math.max(vw, vh) * 0.6;
-    scats.forEach((s, i) => {
-      const d = scatDirs[i] || { x: 0, y: 0 };
-      s.style.transform = `translate(${d.x * fly}px, ${d.y * fly}px) scale(${1 + pz * 0.4})`;
-      s.style.opacity = 1 - clamp(pz * 1.4, 0, 1);
-    });
-    const n = words.length, pos = pw * (n - 1);
-    const a = Math.floor(pos), b = Math.min(n - 1, a + 1);
-    const x0 = words[0].offsetLeft;
-    track.style.transform = `translateX(${-lerp(words[a].offsetLeft - x0, words[b].offsetLeft - x0, pos - a)}px)`;
-    const appear = clamp((p - 0.34) / 0.08, 0, 1);
-    words.forEach((wd, i) => { wd.style.opacity = appear * (1 - Math.min(1, Math.abs(i - pos)) * 0.68); });
-    const active = Math.round(pos);
-    subs.forEach((s, i) => s.classList.toggle("on", appear > 0.5 && i === active));
-  }
-
   // Коллаж собирается из разлетевшихся фото, как галерея в конце видео (только на широком экране)
   const collage = document.querySelector(".collage");
   const collageFigs = [...collage.querySelectorAll("figure")];
@@ -1648,16 +1583,14 @@
     });
   }
 
-  if (reduceMotion) {
-    story.classList.add("static");
-  } else {
+  if (!reduceMotion) {
     let ticking = false;
     const onScrollAnim = () => {
       if (ticking) return;
       ticking = true;
-      requestAnimationFrame(() => { ticking = false; storyFrame(); collageFrame(); });
+      requestAnimationFrame(() => { ticking = false; collageFrame(); });
     };
-    const remeasure = () => { measureStory(); measureCollage(); storyFrame(); collageFrame(); };
+    const remeasure = () => { measureCollage(); collageFrame(); };
     window.addEventListener("scroll", onScrollAnim, { passive: true });
     window.addEventListener("resize", remeasure);
     window.addEventListener("load", remeasure);
