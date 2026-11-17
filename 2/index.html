@@ -326,6 +326,10 @@
   .dcard .price { position: absolute; left: 0; bottom: 0; background: var(--accent); color: var(--accent-ink); font-weight: 600; font-size: var(--t-small); padding: 7px 12px; white-space: nowrap; }
   .dcard b { display: block; margin-top: 14px; font-weight: 600; font-size: 16px; line-height: 1.3; }
   .dcard p { margin: 6px 0 0; color: var(--muted); font-size: var(--t-small); line-height: 1.5; }
+  /* Ещё фото блюд из Instagram ресторана: сетка без подписей */
+  .dmore { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-top: var(--s7); }
+  .dmore img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; background: var(--surface); }
+  @media (max-width: 720px) { .dmore { grid-template-columns: repeat(3, 1fr); gap: 6px; } }
   .fullmenu { display: grid; grid-template-columns: 250px 1fr; gap: clamp(32px, 5vw, 80px); margin-top: var(--s9); align-items: start; }
   .cats { position: sticky; top: 96px; display: grid; border-left: 1px solid var(--line); }
   .cats button { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; border: 0; background: none; cursor: pointer; text-align: left; padding: 10px 0 10px 18px; margin-left: -1px; border-left: 1px solid transparent; font-size: 15px; color: var(--muted); transition: color var(--d1), border-color var(--d1), padding var(--d2) var(--ease); }
@@ -778,8 +782,26 @@
       <figure class="dcard" data-dish="dish-trout"><div class="ph"><img src="../img/dish-trout.jpg" alt="" loading="lazy"><span class="price">5 500 ֏</span></div><b data-i18n="k6"></b><p data-i18n="k6p"></p></figure>
       <figure class="dcard" data-dish="dish-set"><div class="ph"><img src="../img/dish-set.jpg" alt="" loading="lazy"><span class="price">15 000 ֏</span></div><b data-i18n="k7"></b><p data-i18n="k7p"></p></figure>
       <figure class="dcard" data-dish="bread-tonir"><div class="ph"><img src="../img/bread-tonir.jpg" alt="" loading="lazy"><span class="price">250 ֏</span></div><b data-i18n="k8"></b><p data-i18n="k8p"></p></figure>
+      <figure class="dcard" data-dish="dish-spas"><div class="ph"><img src="../img/dish-spas.jpg" alt="" loading="lazy"><span class="price">1 500 ֏</span></div><b data-i18n="k9"></b><p data-i18n="k9p"></p></figure>
+      <figure class="dcard" data-dish="dish-veg-grill"><div class="ph"><img src="../img/dish-veg-grill.jpg" alt="" loading="lazy"><span class="price">2 200 ֏</span></div><b data-i18n="k10"></b><p data-i18n="k10p"></p></figure>
+      <figure class="dcard" data-dish="dish-lamb-kebab"><div class="ph"><img src="../img/dish-lamb-kebab.jpg" alt="" loading="lazy"><span class="price">2 000 ֏</span></div><b data-i18n="k11"></b><p data-i18n="k11p"></p></figure>
+      <figure class="dcard" data-dish="dish-shish"><div class="ph"><img src="../img/dish-shish.jpg" alt="" loading="lazy"><span class="price">2 000 ֏</span></div><b data-i18n="k12"></b><p data-i18n="k12p"></p></figure>
     </div>
     <div class="wrap">
+      <div class="dmore">
+        <img src="../img/dish-more-01.jpg" alt="" loading="lazy">
+        <img src="../img/dish-more-02.jpg" alt="" loading="lazy">
+        <img src="../img/dish-more-03.jpg" alt="" loading="lazy">
+        <img src="../img/dish-more-04.jpg" alt="" loading="lazy">
+        <img src="../img/dish-more-05.jpg" alt="" loading="lazy">
+        <img src="../img/dish-more-06.jpg" alt="" loading="lazy">
+        <img src="../img/dish-more-07.jpg" alt="" loading="lazy">
+        <img src="../img/dish-more-08.jpg" alt="" loading="lazy">
+        <img src="../img/dish-more-09.jpg" alt="" loading="lazy">
+        <img src="../img/dish-more-10.jpg" alt="" loading="lazy">
+        <img src="../img/dish-more-11.jpg" alt="" loading="lazy">
+        <img src="../img/dish-more-12.jpg" alt="" loading="lazy">
+      </div>
       <div class="fullmenu" id="menu-full">
         <div class="cats" id="cats" role="tablist"></div>
         <div class="mlist">
@@ -1192,6 +1214,10 @@
       k6: "Իշխանի խորոված", k6p: "Ամբողջական ձուկ կրակի վրա՝ կիտրոնով։",
       k7: "Ընտանեկան սեթ", k7p: "Խորովածի մեծ տախտակ՝ բանջարեղենով և սոուսներով։ Մեծը՝ 39 000 ֏։",
       k8: "Թոնրի հաց", k8p: "Թխում ենք այստեղ՝ մեր թոնրում, ամեն օր։",
+      k9: "Սպաս", k9p: "Տաք ապուր մածունով, ձավարով և կանաչիով։",
+      k10: "Բանջարեղենի խորոված", k10p: "Սմբուկ, լոլիկ և պղպեղ՝ կրակի վրա։",
+      k11: "Գառան քաբաբ", k11p: "Գառան մսից քաբաբ՝ լոլիկով և սոխով։",
+      k12: "Շիշ թաուկ", k12p: "Մարինացված հավի կտորներ շամփուրի վրա։",
       menuNote: "Գները՝ ռեստորանի մենյուից (Instagram, նոյեմբեր 2026)։ Նկարագրությունները՝ գրառումներից և լուսանկարներից. աշխատող կայքում կճշտենք խոհանոցի հետ։",
       allMenu: "Ամբողջ մենյուն",
       ctaTitle: "Ամրագրեք սեղանը",
@@ -1261,6 +1287,10 @@
       k6: "Шашлык из ишхана", k6p: "Рыба целиком на огне, с лимоном.",
       k7: "Семейный сет", k7p: "Большая доска шашлыка с овощами и соусами. Большой — 39 000 ֏.",
       k8: "Тандырный хлеб", k8p: "Пекут здесь же, в тонире, каждый день.",
+      k9: "Спас", k9p: "Горячий суп на мацуне с полбой и зеленью.",
+      k10: "Овощи на мангале", k10p: "Баклажаны, помидоры и перец на углях.",
+      k11: "Кебаб из баранины", k11p: "Кебаб из баранины с помидорами и луком.",
+      k12: "Шиш таук", k12p: "Маринованная курица на шампуре.",
       menuNote: "Цены — из меню ресторана (Instagram, ноябрь 2026). Описания — по постам и фото, в рабочей версии сверим с кухней.",
       allMenu: "Всё меню",
       ctaTitle: "Забронируйте стол",
@@ -1330,6 +1360,10 @@
       k6: "Grilled ishkhan trout", k6p: "Whole fish over the fire, with lemon.",
       k7: "Family set", k7p: "A large board of khorovats with vegetables and sauces. Large set: 39,000 ֏.",
       k8: "Tonir bread", k8p: "Baked here in our tonir every day.",
+      k9: "Spas", k9p: "A warm matsun soup with wheat and herbs.",
+      k10: "Grilled vegetables", k10p: "Aubergine, tomatoes and peppers over the coals.",
+      k11: "Lamb kebab", k11p: "Lamb kebab with tomatoes and onion.",
+      k12: "Shish taouk", k12p: "Marinated chicken on the skewer.",
       menuNote: "Prices from the restaurant’s menu (Instagram, November 2026). Descriptions are based on posts and photos; we will confirm them with the kitchen for the live site.",
       allMenu: "Full menu",
       ctaTitle: "Book a table",
@@ -1388,7 +1422,7 @@
   /* Блюда с фото: ключ — армянское название из MENU, значение — карточка в ленте «С чего начать» */
   const PH = {
     "Թոնրի հաց": "bread-tonir", "Ղարս աղցան": "dish-kars", "Կեսար հավի մսով": "dish-caesar", "Սմբուկով ռուլետ": "dish-eggplant",
-    "Բորշ": "dish-borsch", "Խաշ մսով": "dish-khash", "Իշխանի խորոված": "dish-trout", "Ընտանեկան սեթ, մեծ": "dish-set", "Ընտանեկան սեթ, փոքր": "dish-set"
+    "Բորշ": "dish-borsch", "Սպաս": "dish-spas", "Բանջարեղենի խորոված": "dish-veg-grill", "Գառան քաբաբ": "dish-lamb-kebab", "Շիշ թաուկ": "dish-shish", "Խաշ մսով": "dish-khash", "Իշխանի խորոված": "dish-trout", "Ընտանեկան սեթ, մեծ": "dish-set", "Ընտանեկան սեթ, փոքր": "dish-set"
   };
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;

@@ -291,6 +291,10 @@
   .dtop b { font-weight: 600; font-size: 16px; line-height: 1.3; }
   .dtop em { font-style: normal; color: var(--accent-2); font-weight: 600; font-size: 15px; white-space: nowrap; }
   .dcard p { margin: 6px 0 0; color: var(--muted); font-size: var(--t-small); line-height: 1.5; }
+  /* Ещё фото блюд из Instagram ресторана: сетка без подписей */
+  .dmore { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-top: var(--s8); }
+  .dmore img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: var(--r-s); background: var(--bg-2); }
+  @media (max-width: 720px) { .dmore { grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: var(--s7); } }
   .menu-foot { display: flex; align-items: center; justify-content: space-between; gap: var(--s5); flex-wrap: wrap; margin-top: var(--s8); padding-top: var(--s5); border-top: 1px solid var(--line); }
   .menu-foot p { margin: 0; font-size: var(--t-micro); color: var(--muted); max-width: 46em; }
 
@@ -811,6 +815,24 @@
         <figure class="dcard"><div class="ph"><img src="../img/dish-trout.jpg" alt="" loading="lazy"></div><div class="dtop"><b data-i18n="k6">Իշխանի խորոված</b><em>5 500 ֏</em></div><p data-i18n="k6p">Ամբողջական ձուկ կրակի վրա՝ կիտրոնով։</p></figure>
         <figure class="dcard"><div class="ph"><img src="../img/dish-set.jpg" alt="" loading="lazy"></div><div class="dtop"><b data-i18n="k7">Ընտանեկան սեթ</b><em>15 000 ֏</em></div><p data-i18n="k7p">Խորովածի մեծ տախտակ՝ բանջարեղենով և սոուսներով։ Մեծը՝ 39 000 ֏։</p></figure>
         <figure class="dcard"><div class="ph"><img src="../img/bread-tonir.jpg" alt="" loading="lazy"></div><div class="dtop"><b data-i18n="k8">Թոնրի հաց</b><em>250 ֏</em></div><p data-i18n="k8p">Թխում ենք այստեղ՝ մեր թոնրում, ամեն օր։</p></figure>
+        <figure class="dcard"><div class="ph"><img src="../img/dish-spas.jpg" alt="" loading="lazy"></div><div class="dtop"><b data-i18n="k9">Սպաս</b><em>1 500 ֏</em></div><p data-i18n="k9p">Տաք ապուր մածունով, ձավարով և կանաչիով։</p></figure>
+        <figure class="dcard"><div class="ph"><img src="../img/dish-veg-grill.jpg" alt="" loading="lazy"></div><div class="dtop"><b data-i18n="k10">Բանջարեղենի խորոված</b><em>2 200 ֏</em></div><p data-i18n="k10p">Սմբուկ, լոլիկ և պղպեղ՝ կրակի վրա։</p></figure>
+        <figure class="dcard"><div class="ph"><img src="../img/dish-lamb-kebab.jpg" alt="" loading="lazy"></div><div class="dtop"><b data-i18n="k11">Գառան քաբաբ</b><em>2 000 ֏</em></div><p data-i18n="k11p">Գառան մսից քաբաբ՝ լոլիկով և սոխով։</p></figure>
+        <figure class="dcard"><div class="ph"><img src="../img/dish-shish.jpg" alt="" loading="lazy"></div><div class="dtop"><b data-i18n="k12">Շիշ թաուկ</b><em>2 000 ֏</em></div><p data-i18n="k12p">Մարինացված հավի կտորներ շամփուրի վրա։</p></figure>
+      </div>
+      <div class="dmore">
+        <img src="../img/dish-more-01.jpg" alt="" loading="lazy">
+        <img src="../img/dish-more-02.jpg" alt="" loading="lazy">
+        <img src="../img/dish-more-03.jpg" alt="" loading="lazy">
+        <img src="../img/dish-more-04.jpg" alt="" loading="lazy">
+        <img src="../img/dish-more-05.jpg" alt="" loading="lazy">
+        <img src="../img/dish-more-06.jpg" alt="" loading="lazy">
+        <img src="../img/dish-more-07.jpg" alt="" loading="lazy">
+        <img src="../img/dish-more-08.jpg" alt="" loading="lazy">
+        <img src="../img/dish-more-09.jpg" alt="" loading="lazy">
+        <img src="../img/dish-more-10.jpg" alt="" loading="lazy">
+        <img src="../img/dish-more-11.jpg" alt="" loading="lazy">
+        <img src="../img/dish-more-12.jpg" alt="" loading="lazy">
       </div>
       <div class="menu-foot reveal">
         <p data-i18n="menuNote">Գները՝ ռեստորանի մենյուից (Instagram, նոյեմբեր 2026)։ Նկարագրությունները՝ գրառումներից և լուսանկարներից. աշխատող կայքում կճշտենք խոհանոցի հետ։</p>
@@ -1250,6 +1272,10 @@
       k6: "Իշխանի խորոված", k6p: "Ամբողջական ձուկ կրակի վրա՝ կիտրոնով։",
       k7: "Ընտանեկան սեթ", k7p: "Խորովածի մեծ տախտակ՝ բանջարեղենով և սոուսներով։ Մեծը՝ 39 000 ֏։",
       k8: "Թոնրի հաց", k8p: "Թխում ենք այստեղ՝ մեր թոնրում, ամեն օր։",
+      k9: "Սպաս", k9p: "Տաք ապուր մածունով, ձավարով և կանաչիով։",
+      k10: "Բանջարեղենի խորոված", k10p: "Սմբուկ, լոլիկ և պղպեղ՝ կրակի վրա։",
+      k11: "Գառան քաբաբ", k11p: "Գառան մսից քաբաբ՝ լոլիկով և սոխով։",
+      k12: "Շիշ թաուկ", k12p: "Մարինացված հավի կտորներ շամփուրի վրա։",
       menuNote: "Գները՝ ռեստորանի մենյուից (Instagram, նոյեմբեր 2026)։ Նկարագրությունները՝ գրառումներից և լուսանկարներից. աշխատող կայքում կճշտենք խոհանոցի հետ։",
       allMenu: "Ամբողջ մենյուն",
       ctaTitle: "Ամրագրեք սեղանը",
@@ -1319,6 +1345,10 @@
       k6: "Шашлык из ишхана", k6p: "Рыба целиком на огне, с лимоном.",
       k7: "Семейный сет", k7p: "Большая доска шашлыка с овощами и соусами. Большой — 39 000 ֏.",
       k8: "Тандырный хлеб", k8p: "Пекут здесь же, в тонире, каждый день.",
+      k9: "Спас", k9p: "Горячий суп на мацуне с полбой и зеленью.",
+      k10: "Овощи на мангале", k10p: "Баклажаны, помидоры и перец на углях.",
+      k11: "Кебаб из баранины", k11p: "Кебаб из баранины с помидорами и луком.",
+      k12: "Шиш таук", k12p: "Маринованная курица на шампуре.",
       menuNote: "Цены — из меню ресторана (Instagram, ноябрь 2026). Описания — по постам и фото, в рабочей версии сверим с кухней.",
       allMenu: "Всё меню",
       ctaTitle: "Забронируйте стол",
@@ -1388,6 +1418,10 @@
       k6: "Grilled ishkhan trout", k6p: "Whole fish over the fire, with lemon.",
       k7: "Family set", k7p: "A large board of khorovats with vegetables and sauces. Large set: 39,000 ֏.",
       k8: "Tonir bread", k8p: "Baked here in our tonir every day.",
+      k9: "Spas", k9p: "A warm matsun soup with wheat and herbs.",
+      k10: "Grilled vegetables", k10p: "Aubergine, tomatoes and peppers over the coals.",
+      k11: "Lamb kebab", k11p: "Lamb kebab with tomatoes and onion.",
+      k12: "Shish taouk", k12p: "Marinated chicken on the skewer.",
       menuNote: "Prices from the restaurant’s menu (Instagram, November 2026). Descriptions are based on posts and photos; we will confirm them with the kitchen for the live site.",
       allMenu: "Full menu",
       ctaTitle: "Book a table",
