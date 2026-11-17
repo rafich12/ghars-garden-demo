@@ -326,10 +326,9 @@
   .dcard .price { position: absolute; left: 0; bottom: 0; background: var(--accent); color: var(--accent-ink); font-weight: 600; font-size: var(--t-small); padding: 7px 12px; white-space: nowrap; }
   .dcard b { display: block; margin-top: 14px; font-weight: 600; font-size: 16px; line-height: 1.3; }
   .dcard p { margin: 6px 0 0; color: var(--muted); font-size: var(--t-small); line-height: 1.5; }
-  /* Ещё фото блюд из Instagram ресторана: сетка без подписей */
-  .dmore { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-top: var(--s7); }
-  .dmore img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; background: var(--surface); }
-  @media (max-width: 720px) { .dmore { grid-template-columns: repeat(3, 1fr); gap: 6px; } }
+  /* Слайд-шоу в залах */
+  .hall-slides img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: scale(1.06); transition: opacity 1.2s var(--ease), transform 6s linear; }
+  .hall-slides img.on { opacity: 1; transform: scale(1); }
   .fullmenu { display: grid; grid-template-columns: 250px 1fr; gap: clamp(32px, 5vw, 80px); margin-top: var(--s9); align-items: start; }
   .cats { position: sticky; top: 96px; display: grid; border-left: 1px solid var(--line); }
   .cats button { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; border: 0; background: none; cursor: pointer; text-align: left; padding: 10px 0 10px 18px; margin-left: -1px; border-left: 1px solid transparent; font-size: 15px; color: var(--muted); transition: color var(--d1), border-color var(--d1), padding var(--d2) var(--ease); }
@@ -700,7 +699,14 @@
         </div>
         <div class="hs-panels" id="hsPanels">
           <article class="hs-panel">
-            <div class="hs-ph frame rvi"><img src="../img/garden-swing.jpg" alt="" loading="lazy"></div>
+            <div class="hs-ph frame rvi hall-slides">
+              <img class="on" src="../img/garden-swing.jpg" alt="" loading="lazy">
+              <img src="../img/alley.jpg" alt="" loading="lazy">
+              <img src="../img/waterfall.jpg" alt="" loading="lazy">
+              <img src="../img/garden-roses-sun.jpg" alt="" loading="lazy">
+              <img src="../img/garden-path.jpg" alt="" loading="lazy">
+              <img src="../img/evening.jpg" alt="" loading="lazy">
+            </div>
             <div class="hs-tx">
               <div class="label" data-i18n="s1c"></div>
               <h3 data-i18n="s1t"></h3>
@@ -709,7 +715,14 @@
             </div>
           </article>
           <article class="hs-panel">
-            <div class="hs-ph frame rvi"><img src="../img/garden-dining.jpg" alt="" loading="lazy"></div>
+            <div class="hs-ph frame rvi hall-slides">
+              <img class="on" src="../img/garden-dining.jpg" alt="" loading="lazy">
+              <img src="../img/tent-hall.jpg" alt="" loading="lazy">
+              <img src="../img/gazebo.jpg" alt="" loading="lazy">
+              <img src="../img/pavilion.jpg" alt="" loading="lazy">
+              <img src="../img/gazebo-2.jpg" alt="" loading="lazy">
+              <img src="../img/terrace-evening.jpg" alt="" loading="lazy">
+            </div>
             <div class="hs-tx">
               <div class="label" data-i18n="s2c"></div>
               <h3 data-i18n="s2t"></h3>
@@ -718,7 +731,11 @@
             </div>
           </article>
           <article class="hs-panel">
-            <div class="hs-ph frame rvi"><img src="../img/hall-ghars-2.jpg" alt="" loading="lazy"></div>
+            <div class="hs-ph frame rvi hall-slides">
+              <img class="on" src="../img/hall-ghars-2.jpg" alt="" loading="lazy">
+              <img src="../img/hall-ghars.jpg" alt="" loading="lazy">
+              <img src="../img/hall-ghars-3.jpg" alt="" loading="lazy">
+            </div>
             <div class="hs-tx">
               <div class="label" data-i18n="s3c"></div>
               <h3 data-i18n="s3t"></h3>
@@ -727,7 +744,14 @@
             </div>
           </article>
           <article class="hs-panel">
-            <div class="hs-ph frame rvi"><img src="../img/room-brick.jpg" alt="" loading="lazy"></div>
+            <div class="hs-ph frame rvi hall-slides">
+              <img class="on" src="../img/room-brick.jpg" alt="" loading="lazy">
+              <img src="../img/room-stone.jpg" alt="" loading="lazy">
+              <img src="../img/room-wood.jpg" alt="" loading="lazy">
+              <img src="../img/room-sofa.jpg" alt="" loading="lazy">
+              <img src="../img/room-cream.jpg" alt="" loading="lazy">
+              <img src="../img/room-cream-2.jpg" alt="" loading="lazy">
+            </div>
             <div class="hs-tx">
               <div class="label" data-i18n="s4c"></div>
               <h3 data-i18n="s4t"></h3>
@@ -786,22 +810,11 @@
       <figure class="dcard" data-dish="dish-veg-grill"><div class="ph"><img src="../img/dish-veg-grill.jpg" alt="" loading="lazy"><span class="price">2 200 ֏</span></div><b data-i18n="k10"></b><p data-i18n="k10p"></p></figure>
       <figure class="dcard" data-dish="dish-lamb-kebab"><div class="ph"><img src="../img/dish-lamb-kebab.jpg" alt="" loading="lazy"><span class="price">2 000 ֏</span></div><b data-i18n="k11"></b><p data-i18n="k11p"></p></figure>
       <figure class="dcard" data-dish="dish-shish"><div class="ph"><img src="../img/dish-shish.jpg" alt="" loading="lazy"><span class="price">2 000 ֏</span></div><b data-i18n="k12"></b><p data-i18n="k12p"></p></figure>
+      <figure class="dcard" data-dish="dish-more-07"><div class="ph"><img src="../img/dish-more-07.jpg" alt="" loading="lazy"><span class="price">7 000 ֏</span></div><b data-i18n="k13"></b><p data-i18n="k13p"></p></figure>
+      <figure class="dcard" data-dish="dish-more-09"><div class="ph"><img src="../img/dish-more-09.jpg" alt="" loading="lazy"><span class="price">1 900 ֏</span></div><b data-i18n="k14"></b><p data-i18n="k14p"></p></figure>
+      <figure class="dcard" data-dish="dish-more-10"><div class="ph"><img src="../img/dish-more-10.jpg" alt="" loading="lazy"><span class="price">2 000 ֏</span></div><b data-i18n="k15"></b><p data-i18n="k15p"></p></figure>
     </div>
     <div class="wrap">
-      <div class="dmore">
-        <img src="../img/dish-more-01.jpg" alt="" loading="lazy">
-        <img src="../img/dish-more-02.jpg" alt="" loading="lazy">
-        <img src="../img/dish-more-03.jpg" alt="" loading="lazy">
-        <img src="../img/dish-more-04.jpg" alt="" loading="lazy">
-        <img src="../img/dish-more-05.jpg" alt="" loading="lazy">
-        <img src="../img/dish-more-06.jpg" alt="" loading="lazy">
-        <img src="../img/dish-more-07.jpg" alt="" loading="lazy">
-        <img src="../img/dish-more-08.jpg" alt="" loading="lazy">
-        <img src="../img/dish-more-09.jpg" alt="" loading="lazy">
-        <img src="../img/dish-more-10.jpg" alt="" loading="lazy">
-        <img src="../img/dish-more-11.jpg" alt="" loading="lazy">
-        <img src="../img/dish-more-12.jpg" alt="" loading="lazy">
-      </div>
       <div class="fullmenu" id="menu-full">
         <div class="cats" id="cats" role="tablist"></div>
         <div class="mlist">
@@ -1218,6 +1231,7 @@
       k10: "Բանջարեղենի խորոված", k10p: "Սմբուկ, լոլիկ և պղպեղ՝ կրակի վրա։",
       k11: "Գառան քաբաբ", k11p: "Գառան մսից քաբաբ՝ լոլիկով և սոխով։",
       k12: "Շիշ թաուկ", k12p: "Մարինացված հավի կտորներ շամփուրի վրա։",
+      allTab: "Բոլորը", k13: "Սյոմգայի խորոված", k13p: "Սյոմգայի կտորներ կրակի վրա՝ կիտրոնով և սոուսով։", k14: "Սնկապուր", k14p: "Կրեմ-ապուր սնկով՝ չորահացով և պանրով։", k15: "Ճտի խորոված", k15p: "Ճտի միս շամփուրի վրա՝ կարտոֆիլով և լավաշով։",
       menuNote: "Գները՝ ռեստորանի մենյուից (Instagram, նոյեմբեր 2026)։ Նկարագրությունները՝ գրառումներից և լուսանկարներից. աշխատող կայքում կճշտենք խոհանոցի հետ։",
       allMenu: "Ամբողջ մենյուն",
       ctaTitle: "Ամրագրեք սեղանը",
@@ -1291,6 +1305,7 @@
       k10: "Овощи на мангале", k10p: "Баклажаны, помидоры и перец на углях.",
       k11: "Кебаб из баранины", k11p: "Кебаб из баранины с помидорами и луком.",
       k12: "Шиш таук", k12p: "Маринованная курица на шампуре.",
+      allTab: "Все", k13: "Шашлык из сёмги", k13p: "Кусочки сёмги на углях с лимоном и соусом.", k14: "Грибной суп", k14p: "Крем-суп из грибов с гренками и сыром.", k15: "Цыплёнок на мангале", k15p: "Цыплёнок на шампуре с картофелем и лавашом.",
       menuNote: "Цены — из меню ресторана (Instagram, ноябрь 2026). Описания — по постам и фото, в рабочей версии сверим с кухней.",
       allMenu: "Всё меню",
       ctaTitle: "Забронируйте стол",
@@ -1364,6 +1379,7 @@
       k10: "Grilled vegetables", k10p: "Aubergine, tomatoes and peppers over the coals.",
       k11: "Lamb kebab", k11p: "Lamb kebab with tomatoes and onion.",
       k12: "Shish taouk", k12p: "Marinated chicken on the skewer.",
+      allTab: "All", k13: "Salmon kebab", k13p: "Salmon pieces over the coals with lemon and sauce.", k14: "Mushroom soup", k14p: "Cream of mushroom soup with croutons and cheese.", k15: "Grilled chicken", k15p: "Chicken on the skewer with potatoes and lavash.",
       menuNote: "Prices from the restaurant’s menu (Instagram, November 2026). Descriptions are based on posts and photos; we will confirm them with the kitchen for the live site.",
       allMenu: "Full menu",
       ctaTitle: "Book a table",
@@ -1422,7 +1438,7 @@
   /* Блюда с фото: ключ — армянское название из MENU, значение — карточка в ленте «С чего начать» */
   const PH = {
     "Թոնրի հաց": "bread-tonir", "Ղարս աղցան": "dish-kars", "Կեսար հավի մսով": "dish-caesar", "Սմբուկով ռուլետ": "dish-eggplant",
-    "Բորշ": "dish-borsch", "Սպաս": "dish-spas", "Բանջարեղենի խորոված": "dish-veg-grill", "Գառան քաբաբ": "dish-lamb-kebab", "Շիշ թաուկ": "dish-shish", "Խաշ մսով": "dish-khash", "Իշխանի խորոված": "dish-trout", "Ընտանեկան սեթ, մեծ": "dish-set", "Ընտանեկան սեթ, փոքր": "dish-set"
+    "Բորշ": "dish-borsch", "Սպաս": "dish-spas", "Բանջարեղենի խորոված": "dish-veg-grill", "Գառան քաբաբ": "dish-lamb-kebab", "Շիշ թաուկ": "dish-shish", "Սյոմգայի խորոված, 340 գ": "dish-more-07", "Սնկապուր": "dish-more-09", "Ճտի խորոված": "dish-more-10", "Խաշ մսով": "dish-khash", "Իշխանի խորոված": "dish-trout", "Ընտանեկան սեթ, մեծ": "dish-set", "Ընտանեկան սեթ, փոքր": "dish-set"
   };
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -1728,6 +1744,19 @@
       btn.classList.remove("loading");
       document.getElementById("done").classList.add("show");
     }, reduceMotion ? 0 : 700);
+  });
+
+
+  // Залы: фото сменяют друг друга, как в гифке
+  document.querySelectorAll(".hall-slides").forEach((box, n) => {
+    const imgs = [...box.querySelectorAll("img")];
+    if (imgs.length < 2) return;
+    let i = 0;
+    setTimeout(() => setInterval(() => {
+      imgs[i].classList.remove("on");
+      i = (i + 1) % imgs.length;
+      imgs[i].classList.add("on");
+    }, 3400), n * 850);
   });
 
   const policy = document.getElementById("policy");

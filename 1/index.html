@@ -241,8 +241,16 @@
   /* Сад и залы: чередующиеся строки */
   .row { display: grid; grid-template-columns: 1.45fr 1fr; gap: clamp(40px, 5vw, 96px); align-items: center; width: min(90vw, 1640px); margin: var(--s9) 0 0 calc(50% - min(45vw, 820px)); }
   .row.rev { grid-template-columns: 1fr 1.45fr; }
-  .row .leaf { height: min(84vh, 880px); min-height: 440px; border-radius: 200px 12px 200px 12px; }
-  .row h3 { font-size: clamp(36px, 3.4vw, 58px); }
+  .row .leaf { height: min(84vh, 880px); min-height: 440px; border-radius: var(--r-s); }
+  .row h3 { font-size: clamp(42px, 3.9vw, 66px); }
+  .row p { font-size: clamp(17px, 1.4vw, 22px); line-height: 1.6; max-width: 32em; }
+  .row .cap { font-size: 13px; }
+  .row .tags span { font-size: 15px; padding: 10px 18px; }
+  /* Слайд-шоу в залах */
+  .hall-slides { position: relative; }
+  .hall-slides img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: scale(1.06); }
+  .js .row .leaf.hall-slides img { transition: opacity 1.2s var(--ease), clip-path 1.2s var(--ease), transform 6s linear; }
+  .hall-slides img.on { opacity: 1; transform: scale(1); }
   .row.rev .media { order: 2; }
   .row p { color: var(--muted); max-width: 30em; margin: var(--s4) 0 0; white-space: pre-line; }
   .row .paving { margin-top: var(--s6); max-width: 252px; }
@@ -291,10 +299,21 @@
   .dtop b { font-weight: 600; font-size: 16px; line-height: 1.3; }
   .dtop em { font-style: normal; color: var(--accent-2); font-weight: 600; font-size: 15px; white-space: nowrap; }
   .dcard p { margin: 6px 0 0; color: var(--muted); font-size: var(--t-small); line-height: 1.5; }
-  /* Ещё фото блюд из Instagram ресторана: сетка без подписей */
-  .dmore { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-top: var(--s8); }
-  .dmore img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: var(--r-s); background: var(--bg-2); }
-  @media (max-width: 720px) { .dmore { grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: var(--s7); } }
+  /* Меню с фото: разделы и карточки «фото, название, описание, цена» */
+  .pm-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-top: var(--s6); }
+  .pm-tabs button { border: 1px solid var(--line); background: none; border-radius: var(--r-pill); padding: 10px 18px; font: 500 14px/1 var(--sans); color: var(--text); cursor: pointer; transition: background-color var(--d1), color var(--d1), border-color var(--d1); }
+  .pm-tabs button:hover { border-color: var(--text); }
+  .pm-tabs button[aria-selected="true"] { background: var(--text); color: var(--bg); border-color: var(--text); }
+  .pgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s7) 22px; margin-top: var(--s6); }
+  .pcard { margin: 0; display: flex; flex-direction: column; }
+  .pcard .ph { aspect-ratio: 4 / 3; border-radius: var(--r-s); overflow: hidden; background: var(--bg-2); }
+  .pcard img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+  .pcard:hover img { transform: scale(1.05); }
+  .pcard b { display: block; margin-top: 14px; font-weight: 600; font-size: 16px; line-height: 1.3; }
+  .pcard p { flex: 1; margin: 6px 0 0; color: var(--muted); font-size: var(--t-small); line-height: 1.5; }
+  .pcard .pprice { margin-top: 10px; font-weight: 600; font-size: 16px; color: var(--accent-2); }
+  @media (max-width: 960px) { .pgrid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 720px) { .pgrid { grid-template-columns: repeat(2, 1fr); gap: 28px 12px; } .pcard b { font-size: 15px; } .pcard p { font-size: 13px; } .pm-tabs button { padding: 9px 14px; font-size: 13.5px; } }
   .menu-foot { display: flex; align-items: center; justify-content: space-between; gap: var(--s5); flex-wrap: wrap; margin-top: var(--s8); padding-top: var(--s5); border-top: 1px solid var(--line); }
   .menu-foot p { margin: 0; font-size: var(--t-micro); color: var(--muted); max-width: 46em; }
 
@@ -526,8 +545,9 @@
     .about, .row { grid-template-columns: 1fr; gap: var(--s7); }
     .row.rev .media { order: 0; }
     .row, .row.rev { grid-template-columns: 1fr; width: auto; margin-left: 0; }
-    .row .leaf { height: auto; min-height: 0; aspect-ratio: 4 / 5; border-radius: var(--r-leaf); }
+    .row .leaf { height: auto; min-height: 0; aspect-ratio: 4 / 5; border-radius: var(--r-s); }
     .row h3 { font-size: var(--t-h3); }
+    .row p { font-size: 16.5px; }
     .art { max-width: 520px; width: 100%; margin: 0 auto; }
     .collage { grid-template-columns: repeat(6, 1fr); grid-auto-rows: 70px; }
     .c1 { grid-column: 1 / 4; grid-row: 1 / 6; }
@@ -715,7 +735,14 @@
         <p class="lead reveal" data-i18n="spacesLead">Ճաշ երկուսով, ընթրիք ընկերներով կամ մեծ տոն՝ ամեն առիթի համար իր տեղը։</p>
       </div>
       <div class="row">
-        <div class="media leaf reveal"><img src="../img/alley.jpg" alt="" loading="lazy"></div>
+        <div class="media leaf reveal hall-slides">
+          <img class="on" src="../img/alley.jpg" alt="" loading="lazy">
+          <img src="../img/garden-swing.jpg" alt="" loading="lazy">
+          <img src="../img/waterfall.jpg" alt="" loading="lazy">
+          <img src="../img/garden-roses-sun.jpg" alt="" loading="lazy">
+          <img src="../img/garden-path.jpg" alt="" loading="lazy">
+          <img src="../img/evening.jpg" alt="" loading="lazy">
+        </div>
         <div class="reveal">
           <div class="cap" data-i18n="s1c">ամեն օր</div>
           <h3 data-i18n="s1t">Այգի</h3>
@@ -725,17 +752,27 @@
         </div>
       </div>
       <div class="row rev">
-        <div class="media leaf reveal"><img src="../img/tent-hall.jpg" alt="" loading="lazy"></div>
+        <div class="media leaf reveal hall-slides">
+          <img class="on" src="../img/tent-hall.jpg" alt="" loading="lazy">
+          <img src="../img/garden-dining.jpg" alt="" loading="lazy">
+          <img src="../img/gazebo.jpg" alt="" loading="lazy">
+          <img src="../img/pavilion.jpg" alt="" loading="lazy">
+          <img src="../img/gazebo-2.jpg" alt="" loading="lazy">
+          <img src="../img/terrace-evening.jpg" alt="" loading="lazy">
+        </div>
         <div class="reveal">
           <div class="cap" data-i18n="s2c">մեծ տոների համար</div>
           <h3 data-i18n="s2t">Բացօթյա սրահ</h3>
           <p data-i18n="s2">Սպիտակ վրանով սրահ այգում։ Հարսանիքներ, նշանադրություններ, կորպորատիվ միջոցառումներ և ընտանեկան տոներ՝ ծառերի և ծաղիկների մեջ։</p>
           <div class="tags"><span data-i18n="t2a">հարսանիք և նշանադրություն</span><span data-i18n="t2b">կորպորատիվ</span><span data-i18n="t2c">ընտանեկան տոն</span></div>
-          <div class="paving" aria-hidden="true"></div>
         </div>
       </div>
       <div class="row">
-        <div class="media leaf reveal"><img src="../img/hall-ghars-2.jpg" alt="" loading="lazy"></div>
+        <div class="media leaf reveal hall-slides">
+          <img class="on" src="../img/hall-ghars-2.jpg" alt="" loading="lazy">
+          <img src="../img/hall-ghars.jpg" alt="" loading="lazy">
+          <img src="../img/hall-ghars-3.jpg" alt="" loading="lazy">
+        </div>
         <div class="reveal">
           <div class="cap" data-i18n="s3c">60–65 հյուր</div>
           <h3 data-i18n="s3t">«Ղարս» սրահ</h3>
@@ -744,7 +781,14 @@
         </div>
       </div>
       <div class="row rev">
-        <div class="media leaf reveal"><img src="../img/room-brick.jpg" alt="" loading="lazy"></div>
+        <div class="media leaf reveal hall-slides">
+          <img class="on" src="../img/room-brick.jpg" alt="" loading="lazy">
+          <img src="../img/room-stone.jpg" alt="" loading="lazy">
+          <img src="../img/room-wood.jpg" alt="" loading="lazy">
+          <img src="../img/room-sofa.jpg" alt="" loading="lazy">
+          <img src="../img/room-cream.jpg" alt="" loading="lazy">
+          <img src="../img/room-cream-2.jpg" alt="" loading="lazy">
+        </div>
         <div class="reveal">
           <div class="cap" data-i18n="s4c">փոքր ընկերախմբի համար</div>
           <h3 data-i18n="s4t">Առանձնասենյակներ</h3>
@@ -806,34 +850,9 @@
         <h3 data-i18n="dishesTitle">Ինչից սկսել</h3>
         <span class="micro" data-i18n="dishesHint">Ֆոտոները՝ ռեստորանի խոհանոցից</span>
       </div>
-      <div class="dgrid stagger">
-        <figure class="dcard"><div class="ph"><img src="../img/dish-kars.jpg" alt="" loading="lazy"></div><div class="dtop"><b data-i18n="k1">Ղարս աղցան</b><em>2 800 ֏</em></div><p data-i18n="k1p">Ֆիրմային՝ տավարի նուրբ միս, սմբուկ, թարմ բանջարեղեն և ընկույզ՝ մեր սոուսով։</p></figure>
-        <figure class="dcard"><div class="ph"><img src="../img/dish-eggplant.jpg" alt="" loading="lazy"></div><div class="dtop"><b data-i18n="k2">Սմբուկով ռուլետ</b><em>2 200 ֏</em></div><p data-i18n="k2p">Տապակած սմբուկի ռուլետներ՝ սոուսով և նռան հատիկներով։</p></figure>
-        <figure class="dcard"><div class="ph"><img src="../img/dish-caesar.jpg" alt="" loading="lazy"></div><div class="dtop"><b data-i18n="k3">Կեսար հավի մսով</b><em>2 900 ֏</em></div><p data-i18n="k3p">Հավ, չորահաց, քերած պանիր և չերի լոլիկ։</p></figure>
-        <figure class="dcard"><div class="ph"><img src="../img/dish-borsch.jpg" alt="" loading="lazy"></div><div class="dtop"><b data-i18n="k4">Բորշ</b><em>1 900 ֏</em></div><p data-i18n="k4p">Թթվասերով և կիտրոնի կտորով։</p></figure>
-        <figure class="dcard"><div class="ph"><img src="../img/dish-khash.jpg" alt="" loading="lazy"></div><div class="dtop"><b data-i18n="k5">Խաշ մսով</b><em>3 500 ֏</em></div><p data-i18n="k5p">Սեզոնին՝ թթուներով, բողկով և լավաշով։</p></figure>
-        <figure class="dcard"><div class="ph"><img src="../img/dish-trout.jpg" alt="" loading="lazy"></div><div class="dtop"><b data-i18n="k6">Իշխանի խորոված</b><em>5 500 ֏</em></div><p data-i18n="k6p">Ամբողջական ձուկ կրակի վրա՝ կիտրոնով։</p></figure>
-        <figure class="dcard"><div class="ph"><img src="../img/dish-set.jpg" alt="" loading="lazy"></div><div class="dtop"><b data-i18n="k7">Ընտանեկան սեթ</b><em>15 000 ֏</em></div><p data-i18n="k7p">Խորովածի մեծ տախտակ՝ բանջարեղենով և սոուսներով։ Մեծը՝ 39 000 ֏։</p></figure>
-        <figure class="dcard"><div class="ph"><img src="../img/bread-tonir.jpg" alt="" loading="lazy"></div><div class="dtop"><b data-i18n="k8">Թոնրի հաց</b><em>250 ֏</em></div><p data-i18n="k8p">Թխում ենք այստեղ՝ մեր թոնրում, ամեն օր։</p></figure>
-        <figure class="dcard"><div class="ph"><img src="../img/dish-spas.jpg" alt="" loading="lazy"></div><div class="dtop"><b data-i18n="k9">Սպաս</b><em>1 500 ֏</em></div><p data-i18n="k9p">Տաք ապուր մածունով, ձավարով և կանաչիով։</p></figure>
-        <figure class="dcard"><div class="ph"><img src="../img/dish-veg-grill.jpg" alt="" loading="lazy"></div><div class="dtop"><b data-i18n="k10">Բանջարեղենի խորոված</b><em>2 200 ֏</em></div><p data-i18n="k10p">Սմբուկ, լոլիկ և պղպեղ՝ կրակի վրա։</p></figure>
-        <figure class="dcard"><div class="ph"><img src="../img/dish-lamb-kebab.jpg" alt="" loading="lazy"></div><div class="dtop"><b data-i18n="k11">Գառան քաբաբ</b><em>2 000 ֏</em></div><p data-i18n="k11p">Գառան մսից քաբաբ՝ լոլիկով և սոխով։</p></figure>
-        <figure class="dcard"><div class="ph"><img src="../img/dish-shish.jpg" alt="" loading="lazy"></div><div class="dtop"><b data-i18n="k12">Շիշ թաուկ</b><em>2 000 ֏</em></div><p data-i18n="k12p">Մարինացված հավի կտորներ շամփուրի վրա։</p></figure>
-      </div>
-      <div class="dmore">
-        <img src="../img/dish-more-01.jpg" alt="" loading="lazy">
-        <img src="../img/dish-more-02.jpg" alt="" loading="lazy">
-        <img src="../img/dish-more-03.jpg" alt="" loading="lazy">
-        <img src="../img/dish-more-04.jpg" alt="" loading="lazy">
-        <img src="../img/dish-more-05.jpg" alt="" loading="lazy">
-        <img src="../img/dish-more-06.jpg" alt="" loading="lazy">
-        <img src="../img/dish-more-07.jpg" alt="" loading="lazy">
-        <img src="../img/dish-more-08.jpg" alt="" loading="lazy">
-        <img src="../img/dish-more-09.jpg" alt="" loading="lazy">
-        <img src="../img/dish-more-10.jpg" alt="" loading="lazy">
-        <img src="../img/dish-more-11.jpg" alt="" loading="lazy">
-        <img src="../img/dish-more-12.jpg" alt="" loading="lazy">
-      </div>
+      <div class="pm-tabs" id="pmTabs" role="tablist"></div>
+      <div class="pgrid" id="pgrid"></div>
+      <template id="pmImgs"><img src="../img/dish-kars.jpg" alt=""><img src="../img/dish-eggplant.jpg" alt=""><img src="../img/dish-caesar.jpg" alt=""><img src="../img/dish-borsch.jpg" alt=""><img src="../img/dish-spas.jpg" alt=""><img src="../img/dish-more-09.jpg" alt=""><img src="../img/dish-khash.jpg" alt=""><img src="../img/dish-trout.jpg" alt=""><img src="../img/dish-more-07.jpg" alt=""><img src="../img/dish-set.jpg" alt=""><img src="../img/dish-lamb-kebab.jpg" alt=""><img src="../img/dish-shish.jpg" alt=""><img src="../img/dish-more-10.jpg" alt=""><img src="../img/dish-veg-grill.jpg" alt=""><img src="../img/bread-tonir.jpg" alt=""></template>
       <div class="menu-foot reveal">
         <p data-i18n="menuNote">Գները՝ ռեստորանի մենյուից (Instagram, նոյեմբեր 2026)։ Նկարագրությունները՝ գրառումներից և լուսանկարներից. աշխատող կայքում կճշտենք խոհանոցի հետ։</p>
         <button class="btn btn-primary" type="button" data-open-menu data-page="0"><span data-i18n="allMenu">Ամբողջ մենյուն</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg></button>
@@ -1276,6 +1295,7 @@
       k10: "Բանջարեղենի խորոված", k10p: "Սմբուկ, լոլիկ և պղպեղ՝ կրակի վրա։",
       k11: "Գառան քաբաբ", k11p: "Գառան մսից քաբաբ՝ լոլիկով և սոխով։",
       k12: "Շիշ թաուկ", k12p: "Մարինացված հավի կտորներ շամփուրի վրա։",
+      allTab: "Բոլորը", k13: "Սյոմգայի խորոված", k13p: "Սյոմգայի կտորներ կրակի վրա՝ կիտրոնով և սոուսով։", k14: "Սնկապուր", k14p: "Կրեմ-ապուր սնկով՝ չորահացով և պանրով։", k15: "Ճտի խորոված", k15p: "Ճտի միս շամփուրի վրա՝ կարտոֆիլով և լավաշով։",
       menuNote: "Գները՝ ռեստորանի մենյուից (Instagram, նոյեմբեր 2026)։ Նկարագրությունները՝ գրառումներից և լուսանկարներից. աշխատող կայքում կճշտենք խոհանոցի հետ։",
       allMenu: "Ամբողջ մենյուն",
       ctaTitle: "Ամրագրեք սեղանը",
@@ -1349,6 +1369,7 @@
       k10: "Овощи на мангале", k10p: "Баклажаны, помидоры и перец на углях.",
       k11: "Кебаб из баранины", k11p: "Кебаб из баранины с помидорами и луком.",
       k12: "Шиш таук", k12p: "Маринованная курица на шампуре.",
+      allTab: "Все", k13: "Шашлык из сёмги", k13p: "Кусочки сёмги на углях с лимоном и соусом.", k14: "Грибной суп", k14p: "Крем-суп из грибов с гренками и сыром.", k15: "Цыплёнок на мангале", k15p: "Цыплёнок на шампуре с картофелем и лавашом.",
       menuNote: "Цены — из меню ресторана (Instagram, ноябрь 2026). Описания — по постам и фото, в рабочей версии сверим с кухней.",
       allMenu: "Всё меню",
       ctaTitle: "Забронируйте стол",
@@ -1422,6 +1443,7 @@
       k10: "Grilled vegetables", k10p: "Aubergine, tomatoes and peppers over the coals.",
       k11: "Lamb kebab", k11p: "Lamb kebab with tomatoes and onion.",
       k12: "Shish taouk", k12p: "Marinated chicken on the skewer.",
+      allTab: "All", k13: "Salmon kebab", k13p: "Salmon pieces over the coals with lemon and sauce.", k14: "Mushroom soup", k14p: "Cream of mushroom soup with croutons and cheese.", k15: "Grilled chicken", k15p: "Chicken on the skewer with potatoes and lavash.",
       menuNote: "Prices from the restaurant’s menu (Instagram, November 2026). Descriptions are based on posts and photos; we will confirm them with the kitchen for the live site.",
       allMenu: "Full menu",
       ctaTitle: "Book a table",
@@ -1475,6 +1497,7 @@
     document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
     updateStatus();
     renderMenu();
+    renderPhotoMenu();
     ["eName", "ePhone", "eGuests", "eConsent"].forEach(id => { document.getElementById(id).textContent = ""; });
     try { localStorage.setItem("ghars-lang", lang); } catch (e) {}
   }
@@ -1720,6 +1743,60 @@
       btn.classList.remove("loading");
       document.getElementById("done").classList.add("show");
     }, reduceMotion ? 0 : 700);
+  });
+
+
+  // Меню с фото, как карточки в интернет-меню: раздел → фото, название, описание, цена (из MENU)
+  const PHOTOS = {
+    "Ղարս աղցան": ["dish-kars", "k1p"],
+    "Սմբուկով ռուլետ": ["dish-eggplant", "k2p"],
+    "Կեսար հավի մսով": ["dish-caesar", "k3p"],
+    "Բորշ": ["dish-borsch", "k4p"],
+    "Սպաս": ["dish-spas", "k9p"],
+    "Սնկապուր": ["dish-more-09", "k14p"],
+    "Խաշ մսով": ["dish-khash", "k5p"],
+    "Իշխանի խորոված": ["dish-trout", "k6p"],
+    "Սյոմգայի խորոված, 340 գ": ["dish-more-07", "k13p"],
+    "Ընտանեկան սեթ, փոքր": ["dish-set", "k7p"],
+    "Գառան քաբաբ": ["dish-lamb-kebab", "k11p"],
+    "Շիշ թաուկ": ["dish-shish", "k12p"],
+    "Ճտի խորոված": ["dish-more-10", "k15p"],
+    "Բանջարեղենի խորոված": ["dish-veg-grill", "k10p"],
+    "Թոնրի հաց": ["bread-tonir", "k8p"]
+  };
+  const pmTabs = document.getElementById("pmTabs"), pgrid = document.getElementById("pgrid");
+  const pmFirst = document.getElementById("pmImgs").content.querySelector("img");
+  const pmBase = ((pmFirst && pmFirst.getAttribute("src")) || "img/x").replace(/[^/]+$/, "");
+  const pmSrc = n => (typeof IMG !== "undefined" && IMG[n]) ? "data:image/webp;base64," + IMG[n] : pmBase + n + ".jpg";
+  let pmCat = "all";
+  function renderPhotoMenu() {
+    const d = T[lang];
+    const groups = MENU.map(c => ({ c, items: c.items.filter(it => PHOTOS[it[0]]) })).filter(g => g.items.length);
+    pmTabs.innerHTML = [`<button type="button" role="tab" data-c="all" aria-selected="${pmCat === "all"}">${esc(d.allTab)}</button>`]
+      .concat(groups.map(g => `<button type="button" role="tab" data-c="${g.c.id}" aria-selected="${pmCat === g.c.id}">${esc(g.c[lang])}</button>`)).join("");
+    pgrid.innerHTML = groups.filter(g => pmCat === "all" || g.c.id === pmCat).flatMap(g => g.items).map(it => {
+      const [img, dk] = PHOTOS[it[0]];
+      const name = lang === "hy" ? it[0] : lang === "ru" ? it[1] : it.en;
+      return `<figure class="pcard"><div class="ph"><img src="${pmSrc(img)}" alt="" loading="lazy"></div><b>${esc(name)}</b><p>${esc(d[dk])}</p><span class="pprice">${price(it[2])}</span></figure>`;
+    }).join("");
+  }
+  pmTabs.addEventListener("click", e => {
+    const b = e.target.closest("button[data-c]");
+    if (!b) return;
+    pmCat = b.dataset.c;
+    renderPhotoMenu();
+  });
+
+  // Залы: фото сменяют друг друга, как в гифке
+  document.querySelectorAll(".hall-slides").forEach((box, n) => {
+    const imgs = [...box.querySelectorAll("img")];
+    if (imgs.length < 2) return;
+    let i = 0;
+    setTimeout(() => setInterval(() => {
+      imgs[i].classList.remove("on");
+      i = (i + 1) % imgs.length;
+      imgs[i].classList.add("on");
+    }, 3400), n * 850);
   });
 
   const policy = document.getElementById("policy");
