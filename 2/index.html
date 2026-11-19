@@ -895,6 +895,8 @@
           <span><span data-i18n="consent"></span> <button type="button" class="open-policy" data-i18n="policyLink"></button></span>
         </label>
         <span class="err" id="eConsent"></span>
+        <input type="text" id="fWebsite" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+        <span class="err" id="eSend" role="alert"></span>
         <button class="submit" type="submit" data-i18n="send"></button>
         <div class="done" id="done" role="status" data-i18n="doneText"></div>
       </form>
@@ -1245,7 +1247,7 @@
       fName: "Անուն", fPhone: "Հեռախոս", fDate: "Ամսաթիվ", fTime: "Ժամ", fGuests: "Հյուրերի քանակը",
       consent: "Համաձայն եմ անձնական տվյալների մշակմանը՝ համաձայն", policyLink: "գաղտնիության քաղաքականության",
       send: "Ուղարկել հայտը",
-      doneText: "Ցուցադրական տարբերակ. աշխատող կայքում հայտը անմիջապես կհասնի ձեզ Telegram-ով կամ WhatsApp-ով։",
+      eSend: "Չհաջողվեց ուղարկել։ Խնդրում ենք զանգահարել՝ +374 44 99 92 22", doneSent: "Շնորհակալություն։ Հայտն ուղարկված է, մենք կկապվենք Ձեզ հետ՝ ամրագրումը հաստատելու համար։", doneText: "Ցուցադրական տարբերակ. աշխատող կայքում հայտը անմիջապես կհասնի ձեզ Telegram-ով կամ WhatsApp-ով։",
       eName: "Լրացրեք անունը", ePhone: "Նշեք ճիշտ հեռախոսահամար", eConsent: "Անհրաժեշտ է ձեր համաձայնությունը", eGuests: "Նշեք հյուրերի քանակը",
       visitTitle: "Ինչպես գտնել մեզ", mapLead: "Չարենցի փողոց, 15՝ պետական քոլեջի հարևանությամբ։ Բաց ենք ամեն օր՝ 09:00–00:00։",
       addrLabel: "Հասցե", addr: "Աբովյան, Եղիշե Չարենցի փ. 15", hoursLabel: "Ժամեր", hours: "Ամեն օր՝ 09:00–00:00", phoneLabel: "Հեռախոս",
@@ -1319,7 +1321,7 @@
       fName: "Имя", fPhone: "Телефон", fDate: "Дата", fTime: "Время", fGuests: "Количество гостей",
       consent: "Согласен на обработку персональных данных согласно", policyLink: "политике конфиденциальности",
       send: "Отправить заявку",
-      doneText: "Это демо: в рабочей версии заявка сразу придёт вам в Telegram или WhatsApp.",
+      eSend: "Не удалось отправить. Позвоните, пожалуйста: +374 44 99 92 22", doneSent: "Спасибо! Заявка отправлена — мы свяжемся с вами, чтобы подтвердить бронь.", doneText: "Это демо: в рабочей версии заявка сразу придёт вам в Telegram или WhatsApp.",
       eName: "Укажите имя", ePhone: "Укажите верный номер телефона", eConsent: "Нужно ваше согласие", eGuests: "Укажите количество гостей",
       visitTitle: "Как нас найти", mapLead: "Улица Чаренца, 15, рядом с госколледжем. Открыто каждый день с 09:00 до 00:00.",
       addrLabel: "Адрес", addr: "Абовян, ул. Егише Чаренца, 15", hoursLabel: "Часы", hours: "Ежедневно 09:00–00:00", phoneLabel: "Телефон",
@@ -1393,7 +1395,7 @@
       fName: "Name", fPhone: "Phone", fDate: "Date", fTime: "Time", fGuests: "Number of guests",
       consent: "I agree to the processing of my personal data under the", policyLink: "privacy policy",
       send: "Send request",
-      doneText: "This is a demo: on the live site the request will go straight to you via Telegram or WhatsApp.",
+      eSend: "Couldn't send the request. Please call +374 44 99 92 22", doneSent: "Thank you! Your request has been sent — we'll contact you to confirm the booking.", doneText: "This is a demo: on the live site the request will go straight to you via Telegram or WhatsApp.",
       eName: "Please enter your name", ePhone: "Please enter a valid phone number", eConsent: "Your consent is required", eGuests: "Please enter the number of guests",
       visitTitle: "How to find us", mapLead: "15 Charents Street, next to the State College. Open daily from 09:00 to 00:00.",
       addrLabel: "Address", addr: "Abovyan, 15 Yeghishe Charents St.", hoursLabel: "Hours", hours: "Daily 09:00–00:00", phoneLabel: "Phone",
@@ -1471,7 +1473,7 @@
     buildMarquee();
     splitWords();
     renderMenu();
-    ["eName", "ePhone", "eGuests", "eConsent"].forEach(id => { document.getElementById(id).textContent = ""; });
+    ["eName", "ePhone", "eGuests", "eConsent", "eSend"].forEach(id => { document.getElementById(id).textContent = ""; });
     try { localStorage.setItem("ghars-lang", lang); } catch (e) {}
   }
 
@@ -1725,6 +1727,22 @@
   const now = new Date();
   dateInput.min = dateInput.value = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
 
+
+  // Отправка заявки: ссылка веб-приложения Google Apps Script (sites/tools/telegram-booking).
+  // Пусто — демо: заявка никуда не уходит. Заполнено — заявка приходит в Telegram.
+  const BOOKING_URL = "https://script.google.com/macros/s/AKfycbxc8ZDgTvp9TNTkQGbDOz6djXJhvBePsUhwIu3Os_E5ErEEhjNIEt1ITmMMNPSwYCvsaw/exec";
+  function sendBooking() {
+    const v = id => (document.getElementById(id).value || "").trim();
+    const seat = document.getElementById("fSeat");
+    const data = {
+      place: "Ghars Garden — вариант 2", name: v("fName"), phone: v("fPhone"), date: v("fDate"), time: v("fTime"),
+      guests: v("fGuests"), seat: seat.value ? seat.options[seat.selectedIndex].text : "", note: v("fNote"),
+      lang, hp: v("fWebsite")
+    };
+    // text/plain и no-cors: Google Apps Script принимает такой запрос без лишних проверок браузера
+    return fetch(BOOKING_URL, { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(data) });
+  }
+
   form.addEventListener("submit", e => {
     e.preventDefault();
     const d = T[lang];
@@ -1737,13 +1755,19 @@
     document.getElementById("eGuests").textContent = guests >= 1 ? "" : d.eGuests;
     document.getElementById("eConsent").textContent = consent ? "" : d.eConsent;
     if (!name || digits.length < 8 || !(guests >= 1) || !consent) return;
-    // В демо заявка никуда не отправляется: короткая «загрузка» и сообщение
     const btn = form.querySelector(".submit");
-    btn.classList.add("loading");
-    setTimeout(() => {
-      btn.classList.remove("loading");
-      document.getElementById("done").classList.add("show");
-    }, reduceMotion ? 0 : 700);
+    const done = document.getElementById("done"), eSend = document.getElementById("eSend");
+    btn.classList.add("loading"); btn.disabled = true;
+    eSend.textContent = ""; done.classList.remove("show");
+    const finish = ok => {
+      btn.classList.remove("loading"); btn.disabled = false;
+      if (!ok) { eSend.textContent = T[lang].eSend; return; }
+      done.textContent = BOOKING_URL ? T[lang].doneSent : T[lang].doneText;
+      done.classList.add("show");
+    };
+    // без ссылки — демо: короткая «загрузка» и сообщение; со ссылкой — заявка уходит в Telegram
+    if (BOOKING_URL) sendBooking().then(() => finish(true), () => finish(false));
+    else setTimeout(() => finish(true), reduceMotion ? 0 : 700);
   });
 
 
