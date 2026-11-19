@@ -90,7 +90,7 @@
     --t-h3: clamp(26px, 2.6vw, 38px);
     --t-statement: clamp(26px, 3vw, 40px);
     --t-lead: clamp(17px, 1.4vw, 19px);
-    --t-body: 16.5px; --t-small: 14px; --t-micro: 12.5px;
+    --t-body: 16.5px; --t-small: 14px; --t-micro: 14px;
     /* отступы */
     --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px; --s6: 32px; --s7: 48px; --s8: 64px; --s9: 96px;
     --section: clamp(88px, 11vw, 150px);
@@ -211,7 +211,7 @@
   .hero h1 span { white-space: nowrap; }
   .hero-text { font-size: var(--t-lead); line-height: 1.6; max-width: 36em; margin: 0 auto 34px; text-shadow: 0 2px 14px rgba(0,0,0,.45); }
   .pills { display: flex; flex-wrap: wrap; gap: var(--s3); justify-content: center; }
-  .hero-info { position: absolute; z-index: 2; left: 0; right: 0; bottom: 26px; font-size: 13.5px; }
+  .hero-info { position: absolute; z-index: 2; left: 0; right: 0; bottom: 26px; font-size: 14px; }
   .hero-info .wrap { display: flex; justify-content: space-between; gap: 20px; opacity: .92; }
   .hero-info a { text-decoration: none; }
   .status { display: inline-flex; align-items: center; gap: 9px; }
@@ -244,7 +244,7 @@
   .row .leaf { height: min(84vh, 880px); min-height: 440px; border-radius: var(--r-s); }
   .row h3 { font-size: clamp(42px, 3.9vw, 66px); }
   .row p { font-size: clamp(17px, 1.4vw, 22px); line-height: 1.6; max-width: 32em; }
-  .row .cap { font-size: 13px; }
+  .row .cap { font-size: 14px; }
   .row .tags span { font-size: 15px; padding: 10px 18px; }
   /* Слайд-шоу в залах */
   .hall-slides { position: relative; }
@@ -303,7 +303,7 @@
   .pm-tabs button { border: 1px solid var(--line); background: none; border-radius: var(--r-pill); padding: 10px 18px; font: 500 14px/1 var(--sans); color: var(--text); cursor: pointer; transition: background-color var(--d1), color var(--d1), border-color var(--d1); }
   .pm-tabs button:hover { border-color: var(--text); }
   .pm-tabs button[aria-selected="true"] { background: var(--text); color: var(--bg); border-color: var(--text); }
-  .pgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s7) 22px; margin-top: var(--s6); }
+  .pgrid { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--s7) 22px; margin-top: var(--s6); }
   .pcard { margin: 0; display: flex; flex-direction: column; }
   .pcard .ph { aspect-ratio: 3 / 4; border-radius: var(--r-s); overflow: hidden; background: var(--bg-2); }
   .pcard img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
@@ -312,7 +312,7 @@
   .pcard p { flex: 1; margin: 6px 0 0; color: var(--muted); font-size: var(--t-small); line-height: 1.5; }
   .pcard .pprice { margin-top: 10px; font-weight: 600; font-size: 16px; color: var(--accent-2); }
   @media (max-width: 960px) { .pgrid { grid-template-columns: repeat(3, 1fr); } }
-  @media (max-width: 720px) { .pgrid { grid-template-columns: repeat(2, 1fr); gap: 28px 12px; } .pcard b { font-size: 15px; } .pcard p { font-size: 13px; } .pm-tabs button { padding: 9px 14px; font-size: 13.5px; } }
+  @media (max-width: 720px) { .pgrid { grid-template-columns: repeat(2, 1fr); gap: 28px 12px; } .pcard b { font-size: 15px; } .pcard p { font-size: 14px; } .pm-tabs button { padding: 9px 14px; font-size: 14px; } }
   .menu-foot { display: flex; align-items: center; justify-content: space-between; gap: var(--s5); flex-wrap: wrap; margin-top: var(--s8); padding-top: var(--s5); border-top: 1px solid var(--line); }
   .menu-foot p { margin: 0; font-size: var(--t-micro); color: var(--muted); max-width: 46em; }
 
@@ -327,7 +327,8 @@
   .band .btn { background: var(--band-ink); color: var(--band-bg); position: relative; z-index: 1; }
 
   /* Отзывы */
-  .quote-wrap { display: grid; grid-template-columns: 120px 1fr; gap: var(--s5); max-width: 860px; margin: var(--s7) auto 0; text-align: left; }
+  .quote-wrap { display: grid; grid-template-columns: 1fr; gap: var(--s5); max-width: 860px; margin: var(--s7) auto 0; text-align: center; }
+  .quote-wrap .chips-row { justify-content: center; }
   .qmark { font: 400 150px/.8 var(--serif); color: var(--accent-2); }
   .quote { font-size: clamp(20px, 2vw, 26px); line-height: 1.5; margin: 0; white-space: pre-line; }
   .quote + .chips-row { margin-top: 28px; }
@@ -373,7 +374,7 @@
   .submit.loading::after { content: ""; position: absolute; left: 50%; top: 50%; width: 18px; height: 18px; margin: -9px 0 0 -9px; border: 2px solid var(--btn-ink); border-right-color: transparent; border-radius: 50%; animation: spin .7s linear infinite; }
   .done { grid-column: 1 / -1; display: none; border: 1px solid var(--line); padding: 14px 16px; font-size: var(--t-small); text-align: center; animation: rise var(--d2) var(--ease); }
   .done.show { display: block; }
-  .or-call { margin: 20px 0 0; font-size: 13.5px; color: var(--muted); }
+  .or-call { margin: 20px 0 0; font-size: 14px; color: var(--muted); }
   .or-call a { color: var(--text); font-weight: 600; }
 
   /* Карта: плашка сверху, всплывающая карточка, метка */
@@ -385,7 +386,7 @@
   .map-bar { position: absolute; z-index: 3; top: var(--s5); left: 50%; transform: translateX(-50%); display: flex; align-items: center; background: var(--surface); border-radius: var(--r-pill); box-shadow: var(--sh-2); padding: var(--s2) var(--s2) var(--s2) var(--s4); white-space: nowrap; }
   .map-bar .cell { padding: 4px 22px; }
   .map-bar .cell + .cell { border-left: 1px solid var(--line); }
-  .map-bar small { display: block; font-size: 11.5px; color: var(--muted); }
+  .map-bar small { display: block; font-size: 14px; color: var(--muted); }
   .map-bar span, .map-bar a { font-size: var(--t-small); font-weight: 500; text-decoration: none; }
   .round { width: 48px; height: 48px; flex: none; border-radius: 50%; display: grid; place-items: center; background: var(--btn-bg); color: var(--btn-ink); margin-left: var(--s3); transition: transform var(--d2) var(--ease); }
   .round:hover { transform: rotate(-12deg) scale(1.06); }
@@ -398,12 +399,12 @@
   .map-pop::after { content: ""; position: absolute; left: -7px; top: 50%; width: 14px; height: 14px; background: var(--surface); transform: translateY(-50%) rotate(45deg); }
   .pop-img { position: relative; height: 150px; margin: 10px 10px 0; border-radius: 12px; overflow: hidden; }
   .pop-img img { width: 100%; height: 100%; object-fit: cover; }
-  .pop-img .badge { position: absolute; right: 8px; top: 8px; display: inline-flex; align-items: center; gap: 6px; background: var(--surface); color: var(--text); border-radius: var(--r-pill); padding: 5px 10px; font-size: 11.5px; font-weight: 600; }
+  .pop-img .badge { position: absolute; right: 8px; top: 8px; display: inline-flex; align-items: center; gap: 6px; background: var(--surface); color: var(--text); border-radius: var(--r-pill); padding: 5px 10px; font-size: 14px; font-weight: 600; }
   .pop-body { padding: 14px 16px 16px; position: relative; z-index: 1; }
   .pop-body h3 { font-size: 24px; }
-  .pop-row { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted); margin-top: 6px; }
+  .pop-row { display: flex; align-items: center; gap: 6px; font-size: 14px; color: var(--muted); margin-top: 6px; }
   .pop-row svg { width: 14px; height: 14px; flex: none; }
-  .pop-meta { display: flex; gap: 14px; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); font-size: 12.5px; color: var(--muted); }
+  .pop-meta { display: flex; gap: 14px; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); font-size: 14px; color: var(--muted); }
   .pop-meta span { display: inline-flex; align-items: center; gap: 5px; }
   .pop-foot { display: flex; align-items: center; justify-content: space-between; margin-top: 12px; }
   .pop-foot b { font-size: 15px; }
@@ -426,10 +427,10 @@
   .book-menu::backdrop { background: rgba(0,0,0,.72); }
   .bm { position: relative; height: 100%; display: flex; flex-direction: column; }
   .bm-head { display: flex; align-items: center; justify-content: space-between; gap: var(--s3); padding: 10px 10px 0 20px; }
-  .bm-tag { font-size: 11.5px; letter-spacing: .06em; color: #7d5a12; border: 1px solid #d8c7a3; padding: 6px 10px; border-radius: var(--r-pill); }
+  .bm-tag { font-size: 14px; letter-spacing: .06em; color: #7d5a12; border: 1px solid #d8c7a3; padding: 6px 10px; border-radius: var(--r-pill); }
   .bm-tabs { display: flex; gap: 6px; overflow-x: auto; padding: 12px 16px 12px; border-bottom: 1px solid #e2d8c4; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
   .bm-tabs::-webkit-scrollbar { display: none; }
-  .bm-tabs button { flex: none; border: 1px solid #d8c7a3; background: none; border-radius: var(--r-pill); padding: 7px 13px; font: 500 13px/1 var(--sans); color: #5e574b; cursor: pointer; transition: background-color var(--d1), color var(--d1), border-color var(--d1); }
+  .bm-tabs button { flex: none; border: 1px solid #d8c7a3; background: none; border-radius: var(--r-pill); padding: 7px 13px; font: 500 14px/1 var(--sans); color: #5e574b; cursor: pointer; transition: background-color var(--d1), color var(--d1), border-color var(--d1); }
   .bm-tabs button:hover { border-color: #7d5a12; color: #1d1a15; }
   .bm-tabs button.on { background: #2a231a; border-color: #2a231a; color: #f6f0e3; }
   .bm-pages { flex: 1; position: relative; overflow: hidden; }
@@ -442,15 +443,14 @@
   .bm-note { max-width: 26em; color: #5e574b; font-size: 14.5px; margin: 0 0 22px; }
   .bm-toc { display: grid; grid-template-columns: 1fr 1fr; gap: 0 26px; width: 100%; max-width: 420px; text-align: left; }
   .bm-toc button { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; border: 0; border-bottom: 1px solid #e2d8c4; background: none; padding: 11px 2px; font: 500 15px/1.2 var(--sans); color: #1d1a15; cursor: pointer; text-align: left; transition: color var(--d1), padding var(--d2) var(--ease); }
-  .bm-toc button small { font-size: 12px; color: #8b8170; font-weight: 400; }
+  .bm-toc button small { font-size: 14px; color: #8b8170; font-weight: 400; }
   .bm-toc button:hover { color: #7d5a12; padding-left: 8px; }
   .bm-page h3 { font-size: 34px; text-align: center; margin-bottom: 6px; }
-  .bm-count { text-align: center; font-size: 12.5px; color: #8b8170; margin: 0 0 22px; }
+  .bm-count { text-align: center; font-size: 14px; color: #8b8170; margin: 0 0 22px; }
   .bm-page ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 13px; }
   .bm-page li { display: flex; align-items: baseline; gap: 10px; font-size: 15.5px; line-height: 1.35; }
   .bm-page li i { flex: 1; min-width: 16px; border-bottom: 1px dotted #b9ad97; transform: translateY(-4px); }
   .bm-page li em { font-style: normal; font-weight: 600; color: #7d5a12; white-space: nowrap; }
-  .bm-page li.star span::after { content: "  ★"; color: #b88a2a; font-size: 12px; }
   .bm-nav { display: flex; align-items: center; justify-content: space-between; padding: 10px 18px; border-top: 1px solid #e2d8c4; }
   .bm-nav button, .bm-close { border: 0; background: none; cursor: pointer; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; color: #1d1a15; transition: background-color var(--d1); }
   .bm-nav button:hover, .bm-close:hover { background: #ece3d0; }
@@ -466,7 +466,7 @@
   dialog.policy p { color: var(--muted); }
 
   /* Переключатель палитры (только для демо) */
-  .palette { position: fixed; left: 14px; top: 50%; transform: translateY(-50%); z-index: 36; display: flex; flex-direction: column; align-items: center; gap: 10px; background: rgba(18,20,15,.72); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,.14); border-radius: var(--r-pill); padding: 12px 7px; font-size: 11px; color: #eee; }
+  .palette { position: fixed; left: 14px; top: 50%; transform: translateY(-50%); z-index: 36; display: flex; flex-direction: column; align-items: center; gap: 10px; background: rgba(18,20,15,.72); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,.14); border-radius: var(--r-pill); padding: 12px 7px; font-size: 14px; color: #eee; }
   .palette button { width: 26px; height: 26px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; padding: 0; transition: transform var(--d1) var(--ease); }
   .palette button:hover { transform: scale(1.12); }
   .palette button[aria-pressed="true"] { border-color: #fff; }
@@ -600,7 +600,7 @@
     .sub-h { flex-direction: column; align-items: flex-start; }
     .dgrid { gap: 34px 12px; }
     .dtop { flex-direction: column; gap: 2px; }
-    .dcard p { font-size: 13px; }
+    .dcard p { font-size: 14px; }
     .quote-wrap { grid-template-columns: 1fr; gap: 0; }
     .qmark { font-size: 100px; height: 60px; }
     .book-card { padding: 36px 20px 28px; }
@@ -620,13 +620,28 @@
     /* на телефоне палитра свёрнута в один кружок и не закрывает текст; нажатие раскрывает выбор */
     .palette:not(.open) button:not([aria-pressed="true"]) { display: none; }
     .dock { display: grid; grid-template-columns: repeat(3, 1fr); position: fixed; left: 0; right: 0; bottom: 0; z-index: 35; background: var(--bg); background: color-mix(in srgb, var(--bg) 96%, transparent); backdrop-filter: blur(10px); border-top: 1px solid var(--line); padding: 8px 8px calc(8px + env(safe-area-inset-bottom)); }
-    .dock a { display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; font-size: 12px; color: var(--muted); padding: 6px 0; }
+    .dock a { display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; font-size: 14px; color: var(--muted); padding: 6px 0; }
     .dock a.primary { color: var(--accent-2); font-weight: 600; }
     .dock svg { width: 21px; height: 21px; }
     .bm-page { padding: 24px 20px 20px; }
     .bm-logo { font-size: 68px; }
     .bm-toc { grid-template-columns: 1fr; }
   }
+
+  /* Палитра — в шапке, рядом с языками: ничего не перекрывает. На телефоне и планшете скрыта */
+  header .palette { position: static; transform: none; flex-direction: row; gap: 6px; background: none; border: 0; padding: 0; box-shadow: none; backdrop-filter: none; border-radius: 0; }
+  header .palette span { display: none; }
+  header .palette button { width: 18px; height: 18px; }
+  header .palette button[aria-pressed="true"] { border-color: currentColor; }
+  @media (max-width: 960px) { .palette { display: none !important; } }
+  /* узкий ПК (ноутбук 1024–1180): шапка в одну строку, палитра скрыта */
+  nav.links a { white-space: nowrap; }
+  @media (max-width: 1180px) { header .palette { display: none; } nav.links { gap: 20px; } .top-right { gap: 12px; } .top .wrap { gap: 24px; } }
+
+  .hero-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px 30px; margin-top: 20px; }
+  .hero-links a { display: inline-flex; align-items: center; gap: 8px; color: var(--light); text-decoration: none; font-size: 15px; font-weight: 500; padding-bottom: 3px; border-bottom: 1px solid rgba(255, 255, 255, .45); transition: border-color var(--d1); }
+  .hero-links a:hover { border-color: currentColor; }
+  .hero-links svg { width: 14px; height: 14px; }
 </style>
 <script>
   document.documentElement.classList.add("js");
@@ -677,8 +692,10 @@
       <div class="pills">
         <a class="btn btn-light" href="#book"><span data-i18n="pBook">Ամրագրել սեղան</span><svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg></a>
         <button class="btn btn-ghost" type="button" data-open-menu data-page="0" data-i18n="pMenu">Մենյու և գներ</button>
-        <a class="btn btn-ghost" href="#spaces" data-i18n="pSpaces">Մեր սրահները</a>
-        <a class="btn btn-ghost" href="#visit" data-i18n="pRoute">Ինչպես հասնել</a>
+      </div>
+      <div class="hero-links">
+        <a href="#spaces"><span data-i18n="pSpaces">Մեր սրահները</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg></a>
+        <a href="#visit"><span data-i18n="pRoute">Ինչպես հասնել</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg></a>
       </div>
     </div>
     <div class="hero-info">
@@ -756,10 +773,6 @@
         <div class="media leaf reveal hall-slides">
           <img class="on" src="../img/tent-hall.jpg" alt="" loading="lazy">
           <img src="../img/garden-dining.jpg" alt="" loading="lazy">
-          <img src="../img/gazebo.jpg" alt="" loading="lazy">
-          <img src="../img/pavilion.jpg" alt="" loading="lazy">
-          <img src="../img/gazebo-2.jpg" alt="" loading="lazy">
-          <img src="../img/terrace-evening.jpg" alt="" loading="lazy">
         </div>
         <div class="reveal">
           <div class="cap" data-i18n="s2c">մեծ տոների համար</div>
@@ -874,7 +887,6 @@
     <div class="wrap center">
       <h2 id="rev-h" class="reveal" data-i18n="revTitle">Հյուրերը մեր մասին</h2>
       <div class="quote-wrap reveal">
-        <div class="qmark" aria-hidden="true">“</div>
         <div>
           <p class="quote" data-i18n="quote">Մեր հյուրերն ամենից շատ գնահատում են համեղ ուտեստները, ջերմ մթնոլորտը և հոգատար սպասարկումը։ Մեզ մոտ յուրաքանչյուր այց վերածվում է հաճելի հիշողության։
 Մենք ստեղծել ենք մի վայր, որտեղ դուք կցանկանաք վերադառնալ կրկին ու կրկին։</p>
@@ -959,7 +971,7 @@
             <div class="pop-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg><span data-i18n="addr">Աբովյան, Եղիշե Չարենցի փ. 15</span></div>
             <div class="pop-meta">
               <span><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3.5 2"/></svg>09:00–00:00</span>
-              <span><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6.5 21.5c0-6 2.3-9.6 5.5-11.6 3.2 2 5.5 5.6 5.5 11.6M12 9.9V4"/></svg><span data-i18n="popMeta">Այգի և սրահներ</span></span>
+              <span><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6.5 21.5c0-6 2.3-9.6 5.5-11.6 3.2 2 5.5 5.6 5.5 11.6M12 9.9V4"/></svg><span data-i18n="popMeta">Մեր սրահները</span></span>
             </div>
             <div class="pop-foot">
               <b>5,0 ★<small data-i18n="chip2">39 գնահատական</small></b>
@@ -1302,12 +1314,12 @@
       menuNote: "Գները՝ ռեստորանի մենյուից (Instagram, նոյեմբեր 2026)։ Նկարագրությունները՝ գրառումներից և լուսանկարներից. աշխատող կայքում կճշտենք խոհանոցի հետ։",
       allMenu: "Ամբողջ մենյուն",
       ctaTitle: "Ամրագրեք սեղանը",
-      revTitle: "Հյուրերը մեր մասին",
+      revTitle: "Ինչու են մեզ սիրում",
       quote: "Մեր հյուրերն ամենից շատ գնահատում են համեղ ուտեստները, ջերմ մթնոլորտը և հոգատար սպասարկումը։ Մեզ մոտ յուրաքանչյուր այց վերածվում է հաճելի հիշողության։\nՄենք ստեղծել ենք մի վայր, որտեղ դուք կցանկանաք վերադառնալ կրկին ու կրկին։",
       chip2: "39 գնահատական", chipRatings: "գնահատական", chipReviews: "կարծիք", revBtn: "Կարդալ կարծիքները →",
       bookT1: "Գալի՞ս եք մեզ մոտ", bookT2: "Ամրագրեք սեղան",
       bookSub: "Ամրագրում կատարելու համար լրացրեք հայտը, և մեր աշխատակիցը կապ կհաստատի Ձեզ հետ՝ ամրագրումը հաստատելու համար։", orCall: "Կամ զանգահարեք",
-      phName: "Ձեր անունը", phPhone: "Հեռախոսահամար", phNote: "Առիթը կամ ցանկություններ (պարտադիր չէ)", guestsPh: "Հյուրերի քանակը",
+      phName: "Ձեր անունը", phPhone: "Հեռախոսահամար", phNote: "Առիթը կամ ցանկություններ (պարտադիր չէ)", guestsPh: "Հյուրերի քանակը", guestsEx: "Օրինակ՝ 4",
       seatLbl: "Որտե՞ղ նստել", seat1: "Այգում", seatTent: "Բացօթյա սրահում", seat2: "«Ղարս» սրահում", seatRoom: "Առանձնասենյակում", seat3: "Միևնույն է",
       fName: "Անուն", fPhone: "Հեռախոս", fDate: "Ամսաթիվ", fTime: "Ժամ", fGuests: "Հյուրերի քանակը",
       consent: "Համաձայն եմ անձնական տվյալների մշակմանը՝ համաձայն", policyLink: "գաղտնիության քաղաքականության",
@@ -1316,7 +1328,7 @@
       eName: "Լրացրեք անունը", ePhone: "Նշեք ճիշտ հեռախոսահամար", eConsent: "Անհրաժեշտ է ձեր համաձայնությունը", eGuests: "Նշեք հյուրերի քանակը",
       visitTitle: "Ինչպես գտնել մեզ", mapLead: "Չարենցի փողոց, 15՝ պետական քոլեջի հարևանությամբ։ Բաց ենք ամեն օր՝ 09:00–00:00։",
       addrLabel: "Հասցե", addr: "Աբովյան, Եղիշե Չարենցի փ. 15", hoursLabel: "Ժամեր", hours: "Ամեն օր՝ 09:00–00:00", phoneLabel: "Հեռախոս",
-      popMeta: "Այգի և սրահներ", routeBtn: "Երթուղի", openY: "Բացել Yandex Քարտեզներում", routeG: "Երթուղի Google-ով",
+      popMeta: "Մեր սրահները", routeBtn: "Երթուղի", openY: "Բացել Yandex Քարտեզներում", routeG: "Երթուղի Google-ով",
       fcSections: "Բաժիններ", fcContacts: "Կոնտակտներ", fcDocs: "Փաստաթղթեր", fcDemo: "Ցուցադրական տարբերակ", fcDemoText: "Լուսանկարները, մենյուն և գները՝ ռեստորանի Instagram էջից, նոյեմբեր 2026։",
       footer: "© 2026 «Ղարս Գարդեն» ռեստորան, Աբովյան", footerDemo: "Կայքի ցուցադրական տարբերակ",
       dockCall: "Զանգ", dockBook: "Ամրագրում", dockRoute: "Երթուղի",
@@ -1376,12 +1388,12 @@
       menuNote: "Цены — из меню ресторана (Instagram, ноябрь 2026). Описания — по постам и фото, в рабочей версии сверим с кухней.",
       allMenu: "Всё меню",
       ctaTitle: "Забронируйте стол",
-      revTitle: "Гости о нас",
+      revTitle: "За что нас любят",
       quote: "Наши гости больше всего ценят вкусные блюда, тёплую атмосферу и заботливое обслуживание. У нас каждый визит становится приятным воспоминанием.\nМы создали место, куда вам захочется возвращаться снова и снова.",
       chip2: "39 оценок", chipRatings: "оценок", chipReviews: "отзывов", revBtn: "Читать отзывы →",
       bookT1: "Собираетесь к нам?", bookT2: "Забронируйте стол",
       bookSub: "Чтобы забронировать стол, заполните заявку, и наш сотрудник свяжется с вами для подтверждения брони.", orCall: "Или позвоните",
-      phName: "Ваше имя", phPhone: "Номер телефона", phNote: "Повод или пожелания (необязательно)", guestsPh: "Количество гостей",
+      phName: "Ваше имя", phPhone: "Номер телефона", phNote: "Повод или пожелания (необязательно)", guestsPh: "Количество гостей", guestsEx: "Например, 4",
       seatLbl: "Где сидеть?", seat1: "В саду", seatTent: "В шатре", seat2: "В зале «Гхарс»", seatRoom: "В отдельной комнате", seat3: "Неважно",
       fName: "Имя", fPhone: "Телефон", fDate: "Дата", fTime: "Время", fGuests: "Количество гостей",
       consent: "Согласен на обработку персональных данных согласно", policyLink: "политике конфиденциальности",
@@ -1390,7 +1402,7 @@
       eName: "Укажите имя", ePhone: "Укажите верный номер телефона", eConsent: "Нужно ваше согласие", eGuests: "Укажите количество гостей",
       visitTitle: "Как нас найти", mapLead: "Улица Чаренца, 15, рядом с госколледжем. Открыто каждый день с 09:00 до 00:00.",
       addrLabel: "Адрес", addr: "Абовян, ул. Егише Чаренца, 15", hoursLabel: "Часы", hours: "Ежедневно 09:00–00:00", phoneLabel: "Телефон",
-      popMeta: "Сад и залы", routeBtn: "Маршрут", openY: "Открыть в Яндекс Картах", routeG: "Маршрут в Google",
+      popMeta: "Наши залы", routeBtn: "Маршрут", openY: "Открыть в Яндекс Картах", routeG: "Маршрут в Google",
       fcSections: "Разделы", fcContacts: "Контакты", fcDocs: "Документы", fcDemo: "Демо-версия", fcDemoText: "Фото, меню и цены — из Instagram ресторана, ноябрь 2026.",
       footer: "© 2026 ресторан Ghars Garden, Абовян", footerDemo: "Демо-версия сайта",
       dockCall: "Звонок", dockBook: "Бронь", dockRoute: "Маршрут",
@@ -1450,12 +1462,12 @@
       menuNote: "Prices from the restaurant’s menu (Instagram, November 2026). Descriptions are based on posts and photos; we will confirm them with the kitchen for the live site.",
       allMenu: "Full menu",
       ctaTitle: "Book a table",
-      revTitle: "Guests about us",
+      revTitle: "Why guests love us",
       quote: "Our guests value our delicious food, warm atmosphere and caring service most of all. Here every visit becomes a pleasant memory.\nWe have created a place you will want to come back to again and again.",
       chip2: "39 ratings", chipRatings: "ratings", chipReviews: "reviews", revBtn: "Read reviews →",
       bookT1: "Coming to see us?", bookT2: "Book a table",
       bookSub: "To make a reservation, fill in the request and a member of our team will contact you to confirm it.", orCall: "Or call",
-      phName: "Your name", phPhone: "Phone number", phNote: "Occasion or wishes (optional)", guestsPh: "Number of guests",
+      phName: "Your name", phPhone: "Phone number", phNote: "Occasion or wishes (optional)", guestsPh: "Number of guests", guestsEx: "e.g. 4",
       seatLbl: "Where to sit?", seat1: "In the garden", seatTent: "In the marquee", seat2: "In the Ghars hall", seatRoom: "In a private room", seat3: "No preference",
       fName: "Name", fPhone: "Phone", fDate: "Date", fTime: "Time", fGuests: "Number of guests",
       consent: "I agree to the processing of my personal data under the", policyLink: "privacy policy",
@@ -1464,7 +1476,7 @@
       eName: "Please enter your name", ePhone: "Please enter a valid phone number", eConsent: "Your consent is required", eGuests: "Please enter the number of guests",
       visitTitle: "How to find us", mapLead: "15 Charents Street, next to the State College. Open daily from 09:00 to 00:00.",
       addrLabel: "Address", addr: "Abovyan, 15 Yeghishe Charents St.", hoursLabel: "Hours", hours: "Daily 09:00–00:00", phoneLabel: "Phone",
-      popMeta: "Garden & halls", routeBtn: "Directions", openY: "Open in Yandex Maps", routeG: "Directions in Google",
+      popMeta: "Our halls", routeBtn: "Directions", openY: "Open in Yandex Maps", routeG: "Directions in Google",
       fcSections: "Sections", fcContacts: "Contacts", fcDocs: "Documents", fcDemo: "Demo version", fcDemoText: "Photos, menu and prices from the restaurant’s Instagram, November 2026.",
       footer: "© 2026 Ghars Garden restaurant, Abovyan", footerDemo: "Website demo",
       dockCall: "Call", dockBook: "Book", dockRoute: "Directions",
@@ -1676,8 +1688,8 @@
       </div>`;
     const cats = MENU.map(c => `<div class="bm-page" data-cat="${c.id}">
         <h3>${esc(up(c[lang]))}</h3>
-        <p class="bm-count">${c.items.length} ${esc(d.bmItems)}${c.items.some(it => it[3]) ? " · " + esc(d.bmStar) : ""}</p>
-        <ul>${c.items.map(it => `<li${it[3] ? ' class="star"' : ""}><span>${esc(nameOf(it))}</span><i></i><em>${esc(price(it[2]))}</em></li>`).join("")}</ul>
+        <p class="bm-count">${c.items.length} ${esc(d.bmItems)}</p>
+        <ul>${c.items.map(it => `<li><span>${esc(nameOf(it))}</span><i></i><em>${esc(price(it[2]))}</em></li>`).join("")}</ul>
       </div>`).join("");
     bmPages.innerHTML = cover + cats;
     bmTabs.innerHTML = MENU.map((c, i) => `<button type="button" role="tab" data-go="${i + 1}">${esc(c[lang])}</button>`).join("");
@@ -1823,6 +1835,10 @@
       imgs[i].classList.add("on");
     }, 3400), n * 850);
   });
+
+
+  // палитру переносим в шапку, к выбору языка
+  (() => { const pal = document.querySelector(".palette"), tr = document.querySelector("header .top-right"); if (pal && tr) tr.insertBefore(pal, tr.firstChild); })();
 
   const policy = document.getElementById("policy");
   document.querySelectorAll(".open-policy").forEach(b => b.addEventListener("click", () => policy.showModal()));

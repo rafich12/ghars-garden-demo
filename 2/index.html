@@ -86,7 +86,7 @@
     --t-h3: clamp(21px, 2.1vw, 29px);
     --t-statement: clamp(23px, 2.5vw, 35px);
     --t-lead: clamp(17px, 1.35vw, 19px);
-    --t-body: 16.5px; --t-small: 14px; --t-micro: 12px;
+    --t-body: 16.5px; --t-small: 14px; --t-micro: 14px;
     --track: .05em;               /* разрядка заголовков */
     /* отступы */
     --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px; --s6: 32px; --s7: 48px; --s8: 64px; --s9: 96px;
@@ -156,7 +156,7 @@
   .frame img { width: 100%; height: 100%; object-fit: cover; }
   .frame::after { content: ""; position: absolute; inset: var(--frame); z-index: 2; border: 1px solid rgba(239, 233, 220, .5); pointer-events: none; }
   .tags { display: flex; flex-wrap: wrap; gap: var(--s2); margin-top: var(--s5); }
-  .tags span { font-size: 13px; border: 1px solid var(--line-2); padding: 6px 12px; }
+  .tags span { font-size: 14px; border: 1px solid var(--line-2); padding: 6px 12px; }
   /* мотив «струи водопада»: тонкие вертикальные линии, тающие книзу */
   .water { height: 90px; background: repeating-linear-gradient(90deg, var(--line-2) 0 1px, transparent 1px 13px); -webkit-mask-image: linear-gradient(#000, transparent); mask-image: linear-gradient(#000, transparent); opacity: .7; }
   /* линия с падающей каплей */
@@ -215,7 +215,7 @@
   .hero-cta { display: flex; flex-wrap: wrap; gap: var(--s3); }
   .hero-links { display: flex; flex-wrap: wrap; gap: 10px 28px; margin-top: clamp(14px, 2.4vh, 22px); }
   @media (min-width: 961px) and (max-height: 800px) { .hero-text { font-size: 16px; line-height: 1.55; } }
-  .hero-info { position: absolute; z-index: 3; left: var(--pad); bottom: 30px; display: flex; flex-wrap: wrap; gap: 6px 24px; font-size: 13.5px; color: rgba(239, 233, 220, .78); }
+  .hero-info { position: absolute; z-index: 3; left: var(--pad); bottom: 30px; display: flex; flex-wrap: wrap; gap: 6px 24px; font-size: 14px; color: rgba(239, 233, 220, .78); }
   .hero-info a { text-decoration: none; }
   .hero-bars { position: absolute; z-index: 3; right: 30px; bottom: 34px; display: flex; gap: 8px; }
   .hero-bars button { width: 44px; height: 18px; padding: 0; border: 0; background: none; cursor: pointer; position: relative; }
@@ -340,7 +340,6 @@
   .mlist ul { list-style: none; margin: 0; padding: 0; columns: 2; column-gap: clamp(32px, 4.5vw, 72px); }
   .mlist li { break-inside: avoid; display: flex; align-items: baseline; justify-content: space-between; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 15.5px; line-height: 1.35; animation: rise var(--d2) var(--ease) both; animation-delay: calc(var(--i, 0) * 16ms); }
   .mlist li em { font-style: normal; font-weight: 600; color: var(--accent); white-space: nowrap; font-variant-numeric: tabular-nums; }
-  .mlist .star { font-style: normal; color: var(--accent); font-size: 11px; margin-left: 7px; vertical-align: 2px; }
   .more { margin-top: 22px; }
   .menu-note { margin: var(--s7) 0 0; padding-top: var(--s5); border-top: 1px solid var(--line); font-size: var(--t-micro); color: var(--muted); max-width: 60em; }
   /* фото блюда у курсора (только ПК) */
@@ -363,20 +362,20 @@
   .rate strong { display: block; margin-top: 12px; font-weight: 600; font-size: 15px; }
   .rate small { color: var(--muted); font-size: var(--t-small); }
   .quote-box { padding-top: 6px; }
-  .quote-box::before { content: "“"; display: block; height: 58px; font: 300 130px/.8 var(--serif); color: var(--accent); }
   .quote { font: 300 clamp(20px, 2vw, 27px)/1.55 var(--serif); margin: 0 0 30px; white-space: pre-line; }
 
   /* ============ Бронь: слева фото, справа форма с выбором «стол / мероприятие» ============ */
   .book { padding: 0; display: grid; grid-template-columns: 1fr 1fr; }
   .book-photo { position: relative; min-height: 760px; overflow: hidden; color: var(--on-photo); }
   .book-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-  .book-cap { position: absolute; left: 0; right: 0; bottom: 0; padding: 140px var(--pad) 56px; background: linear-gradient(transparent, rgba(8, 11, 9, .88)); }
+  .book-cap { position: absolute; left: 0; right: 0; bottom: 0; padding: 240px var(--pad) 56px; background: linear-gradient(rgba(8, 11, 9, 0), rgba(8, 11, 9, .62) 38%, rgba(8, 11, 9, .93)); }
+  .book-cap h2 { text-shadow: 0 2px 22px rgba(0, 0, 0, .5); }
   .book-cap h2 { font-size: clamp(30px, 3.6vw, 54px); }
   .book-cap p { margin: 18px 0 0; max-width: 30em; color: rgba(239, 233, 220, .82); }
   .book-form { background: var(--surface); padding: clamp(40px, 5vw, 84px) clamp(22px, 5vw, 90px); display: flex; flex-direction: column; justify-content: center; }
   .book-form form { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 28px; max-width: 560px; }
   .fld { display: grid; gap: 4px; min-width: 0; align-content: end; }
-  .fld > span { font: 600 11.5px/1.3 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+  .fld > span { font: 600 14px/1.3 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
   .full { grid-column: 1 / -1; }
   .box { width: 100%; min-height: var(--h-field); font: 16px/1.3 var(--sans); color: var(--text); background: transparent; border: 0; border-bottom: 1px solid var(--line-2); border-radius: 0; padding: 10px 0; transition: border-color var(--d1), box-shadow var(--d1); }
   .box::placeholder { color: var(--muted); }
@@ -412,7 +411,7 @@
   .visit-info h2 { font-size: clamp(30px, 3.4vw, 52px); }
   .vlist { margin: var(--s6) 0 0; display: grid; border-top: 1px solid var(--line); }
   .vlist div { padding: 16px 0; border-bottom: 1px solid var(--line); display: grid; gap: 4px; }
-  .vlist dt { font: 600 11.5px/1.3 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+  .vlist dt { font: 600 14px/1.3 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
   .vlist dd { margin: 0; font-size: 17px; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; }
   .vlist a { text-decoration: none; }
   .vbtns { display: flex; flex-wrap: wrap; gap: var(--s3); margin-top: var(--s6); }
@@ -430,7 +429,7 @@
   footer { background: var(--bg); padding: 0 0 30px; overflow: hidden; border-top: 1px solid var(--line); }
   footer .water { margin-bottom: 26px; }
   .fcols { display: grid; grid-template-columns: repeat(3, 1fr) 1.4fr; gap: var(--s6); font-size: var(--t-small); }
-  .fcols b { display: block; font: 600 11.5px/1.3 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--accent); margin-bottom: var(--s4); }
+  .fcols b { display: block; font: 600 14px/1.3 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--accent); margin-bottom: var(--s4); }
   .fcols a, .fcols button, .fcols span { display: block; width: fit-content; color: var(--muted); margin-bottom: 7px; background: none; border: 0; padding: 0; font: inherit; text-align: left; cursor: pointer; }
   .fcols a:hover, .fcols button:hover { color: var(--text); }
   .wordmark { font: 200 clamp(60px, 12.4vw, 196px)/.9 var(--serif); letter-spacing: .03em; text-indent: .03em; text-transform: uppercase; text-align: center; white-space: nowrap; margin: 56px 0 18px; opacity: .1; }
@@ -443,7 +442,7 @@
   dialog.policy p { color: var(--muted); }
 
   /* Переключатель палитры (только для демо) */
-  .palette { position: fixed; left: 12px; top: 50%; transform: translateY(-50%); z-index: 36; display: flex; flex-direction: column; align-items: center; gap: 9px; background: rgba(8, 11, 9, .8); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, .16); padding: 10px 7px; font-size: 11px; color: #eee; }
+  .palette { position: fixed; left: 12px; top: 50%; transform: translateY(-50%); z-index: 36; display: flex; flex-direction: column; align-items: center; gap: 9px; background: rgba(8, 11, 9, .8); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, .16); padding: 10px 7px; font-size: 14px; color: #eee; }
   .palette button { width: 22px; height: 22px; border: 2px solid transparent; cursor: pointer; padding: 0; transition: transform var(--d1) var(--ease); }
   .palette button:hover { transform: scale(1.14); }
   .palette button[aria-pressed="true"] { border-color: #fff; }
@@ -480,7 +479,8 @@
     /* первый экран: фото на весь экран, текст внизу */
     .hero { display: flex; flex-direction: column; justify-content: flex-end; min-height: calc(100vh - 44px); min-height: calc(100svh - 44px); }
     .hero-photo { position: absolute; inset: 0; }
-    .hero-photo::after { background: linear-gradient(180deg, rgba(8, 11, 9, .62) 0%, rgba(8, 11, 9, .46) 24%, rgba(8, 11, 9, .78) 56%, rgba(8, 11, 9, .96) 100%); }
+    .hero-photo::after { background: linear-gradient(180deg, rgba(8, 11, 9, .34) 0%, rgba(8, 11, 9, .08) 18%, rgba(8, 11, 9, .55) 36%, rgba(8, 11, 9, .86) 58%, rgba(8, 11, 9, .96) 100%); }
+    .hero h1, .hero .label { text-shadow: 0 2px 18px rgba(0, 0, 0, .45); }
     .hero-in { padding: 96px 18px 0; }
     .hero h1 { width: auto; font-size: 19vw; font-weight: 300; margin: 14px 0 18px; }
     .hero h1 span + span { margin-left: 0; }
@@ -491,6 +491,8 @@
     .hero-info { position: relative; left: auto; bottom: auto; padding: 18px 18px 92px; flex-direction: column; gap: 4px; }
     .hero-bars, .ptag, .hero-vert { display: none; }
     .trio-grid { grid-template-columns: 1fr; gap: var(--s8); }
+    .trio { padding-top: 36px; }
+    .trio .fall { height: 56px; margin-bottom: 32px; }
     .tcard { width: 84%; }
     .tcard:nth-child(2), .tcard:nth-child(3) { margin-top: 0; }
     .tcard:nth-child(2) { margin-left: auto; }
@@ -546,10 +548,20 @@
     /* на телефоне палитра свёрнута в один квадрат и не закрывает текст; нажатие раскрывает выбор */
     .palette:not(.open) button:not([aria-pressed="true"]) { display: none; }
     .dock { display: grid; grid-template-columns: repeat(3, 1fr); position: fixed; left: 0; right: 0; bottom: 0; z-index: 35; background: var(--bg); background: color-mix(in srgb, var(--bg) 94%, transparent); backdrop-filter: blur(10px); border-top: 1px solid var(--line); padding: 8px 8px calc(8px + env(safe-area-inset-bottom)); }
-    .dock a { display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; font-size: 12px; color: var(--muted); padding: 6px 0; }
+    .dock a { display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; font-size: 14px; color: var(--muted); padding: 6px 0; }
     .dock a.primary { color: var(--accent); font-weight: 600; }
     .dock svg { width: 21px; height: 21px; }
   }
+
+  /* Палитра — в шапке, рядом с языками: ничего не перекрывает. На телефоне и планшете скрыта */
+  header .palette { position: static; transform: none; flex-direction: row; gap: 6px; background: none; border: 0; padding: 0; box-shadow: none; backdrop-filter: none; border-radius: 0; }
+  header .palette span { display: none; }
+  header .palette button { width: 18px; height: 18px; }
+  header .palette button[aria-pressed="true"] { border-color: currentColor; }
+  @media (max-width: 960px) { .palette { display: none !important; } }
+  /* узкий ПК (ноутбук 1024–1180): шапка в одну строку, палитра скрыта */
+  nav.links a { white-space: nowrap; }
+  @media (max-width: 1180px) { header .palette { display: none; } nav.links { gap: 18px; } .top-right { gap: 12px; } nav.links { letter-spacing: .06em; } .bar { gap: 24px; } }
 </style>
 <script>
   document.documentElement.classList.add("js");
@@ -718,10 +730,6 @@
             <div class="hs-ph frame rvi hall-slides">
               <img class="on" src="../img/garden-dining.jpg" alt="" loading="lazy">
               <img src="../img/tent-hall.jpg" alt="" loading="lazy">
-              <img src="../img/gazebo.jpg" alt="" loading="lazy">
-              <img src="../img/pavilion.jpg" alt="" loading="lazy">
-              <img src="../img/gazebo-2.jpg" alt="" loading="lazy">
-              <img src="../img/terrace-evening.jpg" alt="" loading="lazy">
             </div>
             <div class="hs-tx">
               <div class="label" data-i18n="s2c"></div>
@@ -826,7 +834,7 @@
           <button class="btn btn-line more" type="button" id="mMore" hidden></button>
         </div>
       </div>
-      <p class="menu-note"><span data-i18n="bmStar"></span>. <span data-i18n="menuNote"></span></p>
+      <p class="menu-note"><span data-i18n="menuNote"></span></p>
     </div>
   </section>
 
@@ -878,7 +886,7 @@
         <span class="err" id="ePhone"></span>
         <label class="fld"><span data-i18n="fDate"></span><input class="box" id="fDate" type="date"></label>
         <label class="fld"><span data-i18n="fTime"></span><input class="box" id="fTime" type="time" value="19:00"></label>
-        <label class="fld"><span data-i18n="fGuests"></span><input class="box" id="fGuests" inputmode="numeric" pattern="[0-9]*" maxlength="3" autocomplete="off"></label>
+        <label class="fld"><span data-i18n="fGuests"></span><input class="box" id="fGuests" inputmode="numeric" pattern="[0-9]*" maxlength="3" autocomplete="off" data-i18n-ph="guestsEx"></label>
         <label class="fld"><span data-i18n="seatLbl"></span>
           <select class="box" id="fSeat">
             <option data-i18n="seat3"></option>
@@ -1237,12 +1245,12 @@
       menuNote: "Գները՝ ռեստորանի մենյուից (Instagram, նոյեմբեր 2026)։ Նկարագրությունները՝ գրառումներից և լուսանկարներից. աշխատող կայքում կճշտենք խոհանոցի հետ։",
       allMenu: "Ամբողջ մենյուն",
       ctaTitle: "Ամրագրեք սեղանը",
-      revTitle: "Հյուրերը մեր մասին",
+      revTitle: "Ինչու են մեզ սիրում",
       quote: "Մեր հյուրերն ամենից շատ գնահատում են համեղ ուտեստները, ջերմ մթնոլորտը և հոգատար սպասարկումը։ Մեզ մոտ յուրաքանչյուր այց վերածվում է հաճելի հիշողության։\nՄենք ստեղծել ենք մի վայր, որտեղ դուք կցանկանաք վերադառնալ կրկին ու կրկին։",
       chip2: "39 գնահատական", chipRatings: "գնահատական", chipReviews: "կարծիք", revBtn: "Կարդալ կարծիքները →",
       bookT1: "Գալի՞ս եք մեզ մոտ", bookT2: "Ամրագրեք սեղան",
       bookSub: "Ամրագրում կատարելու համար լրացրեք հայտը, և մեր աշխատակիցը կապ կհաստատի Ձեզ հետ՝ ամրագրումը հաստատելու համար։", orCall: "Կամ զանգահարեք",
-      phName: "Ձեր անունը", phPhone: "Հեռախոսահամար", phNote: "Առիթը կամ ցանկություններ (պարտադիր չէ)", guestsPh: "Հյուրերի քանակը",
+      phName: "Ձեր անունը", phPhone: "Հեռախոսահամար", phNote: "Առիթը կամ ցանկություններ (պարտադիր չէ)", guestsPh: "Հյուրերի քանակը", guestsEx: "Օրինակ՝ 4",
       seatLbl: "Որտե՞ղ նստել", seat1: "Այգում", seatTent: "Բացօթյա սրահում", seat2: "«Ղարս» սրահում", seatRoom: "Առանձնասենյակում", seat3: "Միևնույն է",
       fName: "Անուն", fPhone: "Հեռախոս", fDate: "Ամսաթիվ", fTime: "Ժամ", fGuests: "Հյուրերի քանակը",
       consent: "Համաձայն եմ անձնական տվյալների մշակմանը՝ համաձայն", policyLink: "գաղտնիության քաղաքականության",
@@ -1251,7 +1259,7 @@
       eName: "Լրացրեք անունը", ePhone: "Նշեք ճիշտ հեռախոսահամար", eConsent: "Անհրաժեշտ է ձեր համաձայնությունը", eGuests: "Նշեք հյուրերի քանակը",
       visitTitle: "Ինչպես գտնել մեզ", mapLead: "Չարենցի փողոց, 15՝ պետական քոլեջի հարևանությամբ։ Բաց ենք ամեն օր՝ 09:00–00:00։",
       addrLabel: "Հասցե", addr: "Աբովյան, Եղիշե Չարենցի փ. 15", hoursLabel: "Ժամեր", hours: "Ամեն օր՝ 09:00–00:00", phoneLabel: "Հեռախոս",
-      popMeta: "Այգի և սրահներ", routeBtn: "Երթուղի", openY: "Բացել Yandex Քարտեզներում", routeG: "Երթուղի Google-ով",
+      popMeta: "Մեր սրահները", routeBtn: "Երթուղի", openY: "Բացել Yandex Քարտեզներում", routeG: "Երթուղի Google-ով",
       fcSections: "Բաժիններ", fcContacts: "Կոնտակտներ", fcDocs: "Փաստաթղթեր", fcDemo: "Ցուցադրական տարբերակ", fcDemoText: "Լուսանկարները, մենյուն և գները՝ ռեստորանի Instagram էջից, նոյեմբեր 2026։",
       footer: "© 2026 «Ղարս Գարդեն» ռեստորան, Աբովյան", footerDemo: "Կայքի ցուցադրական տարբերակ",
       dockCall: "Զանգ", dockBook: "Ամրագրում", dockRoute: "Երթուղի",
@@ -1311,12 +1319,12 @@
       menuNote: "Цены — из меню ресторана (Instagram, ноябрь 2026). Описания — по постам и фото, в рабочей версии сверим с кухней.",
       allMenu: "Всё меню",
       ctaTitle: "Забронируйте стол",
-      revTitle: "Гости о нас",
+      revTitle: "За что нас любят",
       quote: "Наши гости больше всего ценят вкусные блюда, тёплую атмосферу и заботливое обслуживание. У нас каждый визит становится приятным воспоминанием.\nМы создали место, куда вам захочется возвращаться снова и снова.",
       chip2: "39 оценок", chipRatings: "оценок", chipReviews: "отзывов", revBtn: "Читать отзывы →",
       bookT1: "Собираетесь к нам?", bookT2: "Забронируйте стол",
       bookSub: "Чтобы забронировать стол, заполните заявку, и наш сотрудник свяжется с вами для подтверждения брони.", orCall: "Или позвоните",
-      phName: "Ваше имя", phPhone: "Номер телефона", phNote: "Повод или пожелания (необязательно)", guestsPh: "Количество гостей",
+      phName: "Ваше имя", phPhone: "Номер телефона", phNote: "Повод или пожелания (необязательно)", guestsPh: "Количество гостей", guestsEx: "Например, 4",
       seatLbl: "Где сидеть?", seat1: "В саду", seatTent: "В шатре", seat2: "В зале «Гхарс»", seatRoom: "В отдельной комнате", seat3: "Неважно",
       fName: "Имя", fPhone: "Телефон", fDate: "Дата", fTime: "Время", fGuests: "Количество гостей",
       consent: "Согласен на обработку персональных данных согласно", policyLink: "политике конфиденциальности",
@@ -1325,7 +1333,7 @@
       eName: "Укажите имя", ePhone: "Укажите верный номер телефона", eConsent: "Нужно ваше согласие", eGuests: "Укажите количество гостей",
       visitTitle: "Как нас найти", mapLead: "Улица Чаренца, 15, рядом с госколледжем. Открыто каждый день с 09:00 до 00:00.",
       addrLabel: "Адрес", addr: "Абовян, ул. Егише Чаренца, 15", hoursLabel: "Часы", hours: "Ежедневно 09:00–00:00", phoneLabel: "Телефон",
-      popMeta: "Сад и залы", routeBtn: "Маршрут", openY: "Открыть в Яндекс Картах", routeG: "Маршрут в Google",
+      popMeta: "Наши залы", routeBtn: "Маршрут", openY: "Открыть в Яндекс Картах", routeG: "Маршрут в Google",
       fcSections: "Разделы", fcContacts: "Контакты", fcDocs: "Документы", fcDemo: "Демо-версия", fcDemoText: "Фото, меню и цены — из Instagram ресторана, ноябрь 2026.",
       footer: "© 2026 ресторан Ghars Garden, Абовян", footerDemo: "Демо-версия сайта",
       dockCall: "Звонок", dockBook: "Бронь", dockRoute: "Маршрут",
@@ -1385,12 +1393,12 @@
       menuNote: "Prices from the restaurant’s menu (Instagram, November 2026). Descriptions are based on posts and photos; we will confirm them with the kitchen for the live site.",
       allMenu: "Full menu",
       ctaTitle: "Book a table",
-      revTitle: "Guests about us",
+      revTitle: "Why guests love us",
       quote: "Our guests value our delicious food, warm atmosphere and caring service most of all. Here every visit becomes a pleasant memory.\nWe have created a place you will want to come back to again and again.",
       chip2: "39 ratings", chipRatings: "ratings", chipReviews: "reviews", revBtn: "Read reviews →",
       bookT1: "Coming to see us?", bookT2: "Book a table",
       bookSub: "To make a reservation, fill in the request and a member of our team will contact you to confirm it.", orCall: "Or call",
-      phName: "Your name", phPhone: "Phone number", phNote: "Occasion or wishes (optional)", guestsPh: "Number of guests",
+      phName: "Your name", phPhone: "Phone number", phNote: "Occasion or wishes (optional)", guestsPh: "Number of guests", guestsEx: "e.g. 4",
       seatLbl: "Where to sit?", seat1: "In the garden", seatTent: "In the marquee", seat2: "In the Ghars hall", seatRoom: "In a private room", seat3: "No preference",
       fName: "Name", fPhone: "Phone", fDate: "Date", fTime: "Time", fGuests: "Number of guests",
       consent: "I agree to the processing of my personal data under the", policyLink: "privacy policy",
@@ -1399,7 +1407,7 @@
       eName: "Please enter your name", ePhone: "Please enter a valid phone number", eConsent: "Your consent is required", eGuests: "Please enter the number of guests",
       visitTitle: "How to find us", mapLead: "15 Charents Street, next to the State College. Open daily from 09:00 to 00:00.",
       addrLabel: "Address", addr: "Abovyan, 15 Yeghishe Charents St.", hoursLabel: "Hours", hours: "Daily 09:00–00:00", phoneLabel: "Phone",
-      popMeta: "Garden & halls", routeBtn: "Directions", openY: "Open in Yandex Maps", routeG: "Directions in Google",
+      popMeta: "Our halls", routeBtn: "Directions", openY: "Open in Yandex Maps", routeG: "Directions in Google",
       fcSections: "Sections", fcContacts: "Contacts", fcDocs: "Documents", fcDemo: "Demo version", fcDemoText: "Photos, menu and prices from the restaurant’s Instagram, November 2026.",
       footer: "© 2026 Ghars Garden restaurant, Abovyan", footerDemo: "Website demo",
       dockCall: "Call", dockBook: "Book", dockRoute: "Directions",
@@ -1672,7 +1680,7 @@
     const list = expanded ? c.items : c.items.slice(0, limit);
     mItems.innerHTML = list.map((it, i) => {
       const ph = PH[it[0]];
-      return `<li style="--i:${i}"${ph ? ` data-ph="${ph}"` : ""}><span>${esc(nameOf(it))}${ph ? '<i class="star" aria-hidden="true">★</i>' : ""}</span><em>${esc(price(it[2]))}</em></li>`;
+      return `<li style="--i:${i}"${ph ? ` data-ph="${ph}"` : ""}><span>${esc(nameOf(it))}</span><em>${esc(price(it[2]))}</em></li>`;
     }).join("");
     mMore.hidden = expanded || c.items.length <= limit;
     mMore.textContent = `${d.showAll} (${c.items.length})`;
@@ -1782,6 +1790,10 @@
       imgs[i].classList.add("on");
     }, 3400), n * 850);
   });
+
+
+  // палитру переносим в шапку, к выбору языка
+  (() => { const pal = document.querySelector(".palette"), tr = document.querySelector("header .top-right"); if (pal && tr) tr.insertBefore(pal, tr.firstChild); })();
 
   const policy = document.getElementById("policy");
   document.querySelectorAll(".open-policy").forEach(b => b.addEventListener("click", () => policy.showModal()));
